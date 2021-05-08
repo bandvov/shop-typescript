@@ -12,7 +12,6 @@ const userSchema = new Schema(
       type: String,
       required: 'lastName is required',
     },
-
     email: {
       type: String,
       required: 'Email is required',
@@ -23,17 +22,24 @@ const userSchema = new Schema(
       type: String,
       required: 'Password is required',
     },
-
+    address: {
+      type: String,
+    },
+    phoneNumber: {
+      type: String,
+    },
     orders: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Order',
       },
     ],
+
     confirmed: Boolean,
     avatar: String,
     active: { type: Boolean, default: true },
   },
+
   { timestamps: true },
 );
 
