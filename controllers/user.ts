@@ -7,13 +7,15 @@ import { IUser } from '../types/user';
 
 dotenv.config();
 
-const { SALT, TOKEN_SALT } = process.env;
+const { SALT, TOKEN_SALT, TOKEN_EXPIRES_IN } = process.env;
 
 export const register = async (req: Request, res: Response) => {
   const {
     firstName, lastName, email, password,
   } = req.body as Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' >;
-
+  if (!firstName || !lastName || !email || !password) {
+    res.status(400).json({ message: 'Missing parameters' });
+  }
   const userExists = await User.findOne({ email });
   if (userExists) {
     res.status(400).json({ message: 'User already exist' });
@@ -32,11 +34,12 @@ export const login = async (req: Request, res:Response) => {
   if (!user) {
     res.status(404).json({ message: 'User not found' });
   }
-
+  const token = jwt.sign(user.email, TOKEN_SALT, { expiresIn: TOKEN_EXPIRES_IN });
+  res.cookie('access-token', `Bearer ${token}`, {
+    domain: 'localhost:3000', expires: new Date(Date.now() + 24 * 3600000), secure: true, signed: true,
+  }); // cookie will be removed after 24 hours })
   res.status(200).json({
-    email: user.email,
-    name: user.firstName,
-    token: jwt.sign(user.email, TOKEN_SALT, { expiresIn: '24h' }),
+    firstName: user.firstName, lastName: user.lastName, id: user._id, email: user.email,
   });
 };
 
