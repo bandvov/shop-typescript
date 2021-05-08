@@ -35,10 +35,11 @@ export const login = async (req: Request, res:Response) => {
     res.status(404).json({ message: 'User not found' });
   }
   const token = jwt.sign(user.email, TOKEN_SALT, { expiresIn: TOKEN_EXPIRES_IN });
+  
   res.cookie('access-token', `Bearer ${token}`, {
     domain: 'localhost:3000', expires: new Date(Date.now() + 24 * 3600000), secure: true, signed: true,
   }); // cookie will be removed after 24 hours
-
+  
   res.status(200).json({
     firstName: user.firstName, lastName: user.lastName, id: user._id, email: user.email,
   });
