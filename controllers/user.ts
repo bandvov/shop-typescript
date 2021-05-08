@@ -13,7 +13,9 @@ export const register = async (req: Request, res: Response) => {
   const {
     firstName, lastName, email, password,
   } = req.body as Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' >;
-
+  if (!firstName || !lastName || !email || !password) {
+    res.status(400).json({ message: 'Missing parameters' });
+  }
   const userExists = await User.findOne({ email });
   if (userExists) {
     res.status(400).json({ message: 'User already exist' });
