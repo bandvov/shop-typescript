@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(userRouter);
+app.disable('x-powered-by');
 app.get('/', (request, response) => {
   response.send('Hello world!');
 });
