@@ -7,7 +7,7 @@ import { IUser } from '../types/user';
 
 dotenv.config();
 
-const { SALT, TOKEN_SALT, TOKEN_EXPIRES_IN } = process.env;
+const { SALT, JWT_SALT, JWT_EXPIRES_IN } = process.env;
 
 export const register = async (req: Request, res: Response) => {
   const {
@@ -17,13 +17,15 @@ export const register = async (req: Request, res: Response) => {
     res.status(400).json({ message: 'Missing parameters' });
   }
   const userExists = await User.findOne({ email });
+
   if (userExists) {
     res.status(400).json({ message: 'User already exist' });
   }
   await new User({
     firstName, lastName, email, password: sha256(password + SALT),
-  });
-  res.status(200).json({ message: 'User successfully registered' });
+  }).save();
+
+  res.status(201).json({ message: 'User successfully registered' });
 };
 
 export const login = async (req: Request, res:Response) => {
@@ -34,7 +36,9 @@ export const login = async (req: Request, res:Response) => {
   if (!user) {
     res.status(404).json({ message: 'User not found' });
   }
-  const token = jwt.sign(user.email, TOKEN_SALT, { expiresIn: TOKEN_EXPIRES_IN });
+  const token = jwt.sign({ email: user.email }, JWT_SALT, {
+    expiresIn: JWT_EXPIRES_IN,
+  });
 
   res.cookie('access-token', `Bearer ${token}`, {
     domain: 'localhost:3000', expires: new Date(Date.now() + 24 * 3600000), secure: true, signed: true,
@@ -46,20 +50,33 @@ export const login = async (req: Request, res:Response) => {
 };
 
 export const updateUser = async (req:Request, res:Response) => {
+  const { id } = req.params;
   const {
-    _id,
-    firstName, lastName, email, password, avatar,
-    active, address, phoneNumber,
-  } = req.body as Pick<IUser, '_id' | 'firstName' | 'lastName' | 'email' | 'password' | 'phoneNumber' | 'address' | 'avatar' | 'active' >;
+    firstName,
+    lastName,
+    email,
+    password,
+    avatar,
+    active,
+    address,
+    phoneNumber,
+  } = req.body as Pick<IUser, | 'firstName' | 'lastName' | 'email' | 'password' | 'phoneNumber' | 'address' | 'avatar' | 'active' >;
 
   const userExists = await User.findOne({ email });
   if (!userExists) {
     res.status(404).json({ message: 'User not found' });
   }
 
-  const user: IUser | null = await User.findByIdAndUpdate(_id, {
+  const user: IUser | null = await User.findByIdAndUpdate(id, {
     $set: {
-      firstName, lastName, email, password: sha256(password + SALT), avatar, active, address, phoneNumber,
+      firstName,
+      lastName,
+      email,
+      password: sha256(password + SALT),
+      avatar,
+      active,
+      address,
+      phoneNumber,
     },
   }, { new: true });
 
@@ -69,13 +86,11 @@ export const updateUser = async (req:Request, res:Response) => {
 };
 
 export const deleteUser = async (req:Request, res:Response) => {
-  const {
-    _id,
-  } = req.body as Pick<IUser, '_id' >;
+  const { id } = req.params;
 
-  const user = await User.findByIdAndDelete(_id);
+  const user = await User.findByIdAndDelete(id);
   if (!user) {
-    res.status(404).json({ message: 'User not found' });
+    return res.status(404).json({ message: 'User not found' });
   }
   res.status(200).json({ message: 'User successfully deleted' });
 };
