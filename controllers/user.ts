@@ -9,6 +9,18 @@ dotenv.config();
 
 const { SALT, JWT_SALT, JWT_EXPIRES_IN } = process.env;
 
+export const getAllUsers = async (req: Request, res: Response) => {
+  const users = await User.find();
+  res.json({ users });
+};
+export const getUserById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (!user) {
+    res.status(404).json({ messag: 'User not found' });
+  }
+  res.status(200).json({ user });
+};
 export const register = async (req: Request, res: Response) => {
   const {
     firstName, lastName, email, password,

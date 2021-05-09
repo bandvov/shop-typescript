@@ -2,8 +2,12 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 dotenv.config();
-
-const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.f8dbj.azure.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+const {
+  NODE_ENV, MONGO_USER, MONGO_PASSWORD, MONGO_DB, TEST_MONGO_DB,
+} = process.env;
+const uri: string = NODE_ENV === 'UNITTEST'
+  ? `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cluster0.f8dbj.azure.mongodb.net/${TEST_MONGO_DB}?retryWrites=true&w=majority`
+  : `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cluster0.f8dbj.azure.mongodb.net/${MONGO_DB}?retryWrites=true&w=majority`;
 
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose.set('useFindAndModify', false);
