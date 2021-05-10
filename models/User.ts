@@ -31,7 +31,7 @@ const userSchema = new Schema(
     orders: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Order',
+        ref: 'Orders',
       },
     ],
 
@@ -43,4 +43,4 @@ const userSchema = new Schema(
   { timestamps: true },
 );
 
-export default model < IUser >('User', userSchema, 'User');
+export default model < IUser >('Users', userSchema, 'Users');

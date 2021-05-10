@@ -1,10 +1,8 @@
 import dotenv from 'dotenv';
 import log4js from 'log4js';
 import { app } from './app';
-import { connectDb } from './db';
 
 dotenv.config();
-connectDb();
 
 const logger = log4js.getLogger();
 logger.level = process.env.LOG_LEVEL as string;
