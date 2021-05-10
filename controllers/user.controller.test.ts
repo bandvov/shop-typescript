@@ -15,8 +15,9 @@ const newUserData = {
   firstName: 'Vova',
   lastName: 'Vas',
 };
-let createdUserId = '';
+let createdUserId;
 const fakeUserId = '6098e3fc5fc9d803043fec33';
+
 describe('UserController', () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -24,6 +25,9 @@ describe('UserController', () => {
   beforeAll(() => {
     connectDb();
     new User(newUserData).save();
+  });
+  afterAll(async () => {
+    await User.findByIdAndDelete(createdUserId);
   });
 
   test('Test missing email', (done) => {
@@ -43,8 +47,8 @@ describe('UserController', () => {
       .post(REGISTER_ROUTE)
       .type('form')
       .send({ email: 'aa@aa.aa', firstName: 'Vova', lastName: 'Vas' })
-      .expect(400)
       .end((err, res) => {
+        expect(res.status).toBe(400);
         expect(res.body.message).toBe('Missing parameters');
         done();
       });
@@ -54,9 +58,11 @@ describe('UserController', () => {
     request(app)
       .post(REGISTER_ROUTE)
       .type('form')
+      .set('Accept', 'application/json')
       .send({ email: 'aa@aa.aa', password: '123456', lastName: 'Vas' })
-      .expect(400)
+      .expect('Content-Type', /json/)
       .end((err, res) => {
+        expect(res.status).toBe(400);
         expect(res.body.message).toBe('Missing parameters');
         done();
       });
@@ -65,12 +71,12 @@ describe('UserController', () => {
   test('Test missing lastName', (done) => {
     request(app)
       .post(REGISTER_ROUTE)
-      .set('Accept', 'application/json')
       .type('form')
+      .set('Accept', 'application/json')
       .send({ email: 'aa@aa.aa', password: '123456', firstName: 'Vova' })
-      .expect(400)
       .expect('Content-Type', /json/)
       .end((err, res) => {
+        expect(res.status).toBe(400);
         expect(res.body.message).toBe('Missing parameters');
         done();
       });
@@ -82,8 +88,8 @@ describe('UserController', () => {
       .type('form')
       .set('Accept', 'application/json')
       .send(newUserData)
-      .expect(400)
       .end((err, res) => {
+        expect(res.status).toBe(400);
         expect(res.body.message).toBe('User already exist');
         done();
       });
@@ -95,8 +101,8 @@ describe('UserController', () => {
       .type('form')
       .set('Accept', 'application/json')
       .send({ ...newUserData, email: 'bac@hh.ds' })
-      .expect(201)
       .end((err, res) => {
+        expect(res.status).toBe(201);
         createdUserId = res.body.id;
         expect(res.body.message).toBe('User successfully registered');
         done();
@@ -142,8 +148,8 @@ describe('UserController', () => {
         confirmed: true,
         avatar: 'dasasdasdasd',
       })
-      .expect(200)
       .end((err, res) => {
+        expect(res.status).toBe(200);
         expect(res.body.message).toBe('User data successfully updated');
         done();
       });
@@ -162,8 +168,8 @@ describe('UserController', () => {
         confirmed: true,
         avatar: 'dasasdasdasd',
       })
-      .expect(200)
       .end((err, res) => {
+        expect(res.status).toBe(404);
         expect(res.body.message).toBe('User not found');
         done();
       });
@@ -172,8 +178,8 @@ describe('UserController', () => {
   test('should delete user', (done) => {
     request(app)
       .delete(DELETE_USER_ROUTE.replace(':id', createdUserId))
-      .expect(200)
       .end((err, res) => {
+        expect(res.status).toBe(200);
         expect(res.body.message).toBe('User successfully deleted');
         done();
       });
@@ -182,8 +188,8 @@ describe('UserController', () => {
   test('should return error if delete not existing user', (done) => {
     request(app)
       .delete(DELETE_USER_ROUTE.replace(':id', fakeUserId))
-      .expect(404)
       .end((err, res) => {
+        expect(res.status).toBe(404);
         expect(res.body.message).toBe('User not found');
         done();
       });

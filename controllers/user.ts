@@ -11,13 +11,16 @@ const { SALT, JWT_SALT, JWT_EXPIRES_IN } = process.env;
 
 export const getAllUsers = async (req: Request, res: Response) => {
   const users: IUser[] = await User.find();
-  res.json({ users });
+  res.status(200).json({ users });
 };
 export const getUserById = async (req: Request, res: Response) => {
   const { id } = req.params;
   const user: IUser | null = await User.findById(id);
+
+  res.setHeader('Content-Type', 'application/json');
+
   if (!user) {
-    res.status(404).json({ messag: 'User not found' });
+    res.status(404).json({ message: 'User not found' });
   }
   res.status(200).json({ user });
 };
