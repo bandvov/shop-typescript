@@ -43,4 +43,4 @@ const userSchema = new Schema(
   { timestamps: true },
 );
 
-export default model < IUser >('Users', userSchema, 'Users');
+export default model<IUser>('Users', userSchema, 'Users');

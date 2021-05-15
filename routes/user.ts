@@ -10,7 +10,12 @@ import {
 } from '../configs';
 
 import {
-  register, login, updateUser, deleteUser, getUserById, getAllUsers,
+  register,
+  login,
+  updateUser,
+  deleteUser,
+  getUserById,
+  getAllUsers,
 } from '../controllers/user';
 
 const router = express.Router();

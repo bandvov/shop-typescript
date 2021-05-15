@@ -13,9 +13,12 @@ const options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose.set('useFindAndModify', false);
 
 export const connectDb = () => {
-  mongoose.connect(uri, options).then((res) => {
-    console.log('Connected to mongodb');
-  }).catch((err) => {
-    throw err;
-  });
+  mongoose
+    .connect(uri, options)
+    .then((res) => {
+      console.log('Connected to mongodb');
+    })
+    .catch((err) => {
+      throw err;
+    });
 };

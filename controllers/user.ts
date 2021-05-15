@@ -27,7 +27,10 @@ export const getUserById = async (req: Request, res: Response) => {
 export const register = async (req: Request, res: Response) => {
   const {
     firstName, lastName, email, password,
-  } = req.body as Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password' >;
+  } = req.body as Pick<
+    IUser,
+    'firstName' | 'lastName' | 'email' | 'password'
+  >;
 
   res.setHeader('Content-Type', 'application/json');
 
@@ -40,20 +43,26 @@ export const register = async (req: Request, res: Response) => {
     res.status(400).json({ message: 'User already exist' });
   }
   const user: IUser = await new User({
-    firstName, lastName, email, password: sha256(password + SALT),
+    firstName,
+    lastName,
+    email,
+    password: sha256(password + SALT),
   }).save();
 
-  res.status(201).json({ message: 'User successfully registered', id: user._id });
+  res
+    .status(201)
+    .json({ message: 'User successfully registered', id: user._id });
 };
 
 export const login = async (req: Request, res: Response) => {
-  const {
-    email, password,
-  } = req.body as Pick<IUser, 'email' | 'password' >;
+  const { email, password } = req.body as Pick<IUser, 'email' | 'password'>;
 
   res.setHeader('Content-Type', 'application/json');
 
-  const user: IUser | null = await User.findOne({ email, password: sha256(password + SALT) });
+  const user: IUser | null = await User.findOne({
+    email,
+    password: sha256(password + SALT),
+  });
   if (!user) {
     res.status(404).json({ message: 'User not found' });
   }
@@ -62,7 +71,10 @@ export const login = async (req: Request, res: Response) => {
   });
 
   res.cookie('access-token', `Bearer ${token}`, {
-    domain: 'localhost:3000', expires: new Date(Date.now() + 24 * 3600000), secure: true, signed: true,
+    domain: 'localhost:3000',
+    expires: new Date(Date.now() + 24 * 3600000),
+    secure: true,
+    signed: true,
   }); // cookie will be removed after 24 hours
   res.status(200).json({
     firstName: user.firstName,
@@ -73,7 +85,7 @@ export const login = async (req: Request, res: Response) => {
   });
 };
 
-export const updateUser = async (req:Request, res:Response) => {
+export const updateUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   const {
     firstName,
@@ -84,7 +96,17 @@ export const updateUser = async (req:Request, res:Response) => {
     active,
     address,
     phoneNumber,
-  } = req.body as Pick<IUser, | 'firstName' | 'lastName' | 'email' | 'password' | 'phoneNumber' | 'address' | 'avatar' | 'active' >;
+  } = req.body as Pick<
+    IUser,
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'password'
+    | 'phoneNumber'
+    | 'address'
+    | 'avatar'
+    | 'active'
+  >;
 
   res.setHeader('Content-Type', 'application/json');
 
@@ -94,18 +116,22 @@ export const updateUser = async (req:Request, res:Response) => {
     res.status(404).json({ message: 'User not found' });
   }
 
-  const user: IUser | null = await User.findByIdAndUpdate(id, {
-    $set: {
-      firstName,
-      lastName,
-      email,
-      password: sha256(password + SALT),
-      avatar,
-      active,
-      address,
-      phoneNumber,
+  const user: IUser | null = await User.findByIdAndUpdate(
+    id,
+    {
+      $set: {
+        firstName,
+        lastName,
+        email,
+        password: sha256(password + SALT),
+        avatar,
+        active,
+        address,
+        phoneNumber,
+      },
     },
-  }, { new: true });
+    { new: true },
+  );
 
   if (user) {
     user.password = undefined;
@@ -113,7 +139,7 @@ export const updateUser = async (req:Request, res:Response) => {
   }
 };
 
-export const deleteUser = async (req:Request, res:Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   res.setHeader('Content-Type', 'application/json');
 
