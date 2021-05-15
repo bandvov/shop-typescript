@@ -19,6 +19,15 @@ export const connectDb = () => {
       console.log('Connected to mongodb');
     })
     .catch((err) => {
+      console.log('mongo err', err);
+
       throw err;
     });
+};
+export const disconnectDb = async () => {
+  await mongoose.disconnect((err) => {
+    if (err) {
+      throw err;
+    }
+  });
 };
