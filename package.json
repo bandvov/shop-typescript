@@ -19,7 +19,7 @@
     "lint": "eslint --cache --ext .ts .",
     "lint:fix": "eslint --cache --ext .ts . --fix",
     "prebuild": "npm run lint:fix",
-    "t": "jest --config=jest.config.js"
+    "test:unit": "jest --config=jest.config.js"
   },
   "author": "Volodymyr Vasylkiv",
   "license": "ISC",
