@@ -16,7 +16,12 @@ export const notFound = (req: Request, res: Response, next: Function) => {
   res.status(404).json({ message: 'Route not found' });
 };
 
-export const mongooseError = (err:{errors: string[]}, req: Request, res:Response, next: Function) => {
+export const mongooseError = (
+  err: { errors: string[] },
+  req: Request,
+  res: Response,
+  next: Function,
+) => {
   if (!err.errors) return next(err);
   const errorKeys = Object.keys(err.errors);
   let message = '';
