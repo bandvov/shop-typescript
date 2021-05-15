@@ -10,7 +10,7 @@ dotenv.config();
 const { SALT, JWT_SALT, JWT_EXPIRES_IN } = process.env;
 
 export const getAllUsers = async (req: Request, res: Response) => {
-  const users: IUser[] = await User.find();
+  const users: IUser[] = await User.find({}, '-password');
   res.status(200).json({ users });
 };
 export const getUserById = async (req: Request, res: Response) => {

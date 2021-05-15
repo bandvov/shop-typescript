@@ -22,3 +22,10 @@ export const connectDb = () => {
       throw err;
     });
 };
+export const disconnectDb = async () => {
+  await mongoose.disconnect((err) => {
+    if (err) {
+      throw err;
+    }
+  });
+};
