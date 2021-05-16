@@ -6,5 +6,5 @@ export const GET_ALL_USERS_ROUTE = '/get-all-users';
 export const GET_USER_BY_ID_ROUTE = '/user/:id';
 
 export const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-export const NAME_REGEXP = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+export const NAME_REGEXP = /^([ \u00c0-\u01ffa-zA-Z'\-]+){2,}$/;
 export const PASSWORD_REGEXP = /^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*\d+)(?=.*[@$!%*?&]+)[A-Za-z\d@$!%*?#^&]{8,}$/;

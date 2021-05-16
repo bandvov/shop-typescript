@@ -61,7 +61,7 @@ describe('UserController', () => {
         done();
       });
   });
-  test('Should return error if user doesn\'t exist', (done) => {
+  test('Should return error if user doesn"t exist', (done) => {
     request(app)
       .get(GET_USER_BY_ID_ROUTE.replace(':id', '') + fakeUserId)
       .end((err, res) => {
@@ -107,6 +107,24 @@ describe('UserController', () => {
         done();
       });
   });
+  test('Test invalid firstName format', (done) => {
+    request(app)
+      .post(REGISTER_ROUTE)
+      .type('form')
+      .set('Accept', 'application/json')
+      .send({
+        email: 'aa@aa.aa',
+        password: '123aA$456',
+        firstName: '3',
+        lastName: 'Vas',
+      })
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        expect(res.status).toBe(400);
+        expect(res.body.message).toBe('Missing parameters');
+        done();
+      });
+  });
 
   test('Test missing lastName', (done) => {
     request(app)
@@ -114,6 +132,24 @@ describe('UserController', () => {
       .type('form')
       .set('Accept', 'application/json')
       .send({ email: 'aa@aa.aa', password: '123aA*456', firstName: 'Vova' })
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        expect(res.status).toBe(400);
+        expect(res.body.message).toBe('Missing parameters');
+        done();
+      });
+  });
+  test('Test invalid lastName format', (done) => {
+    request(app)
+      .post(REGISTER_ROUTE)
+      .type('form')
+      .set('Accept', 'application/json')
+      .send({
+        email: 'aa@aa.aa',
+        password: '123aA$456',
+        firstName: 'Vova',
+        lastName: '4%',
+      })
       .expect('Content-Type', /json/)
       .end((err, res) => {
         expect(res.status).toBe(400);
