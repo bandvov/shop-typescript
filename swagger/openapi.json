@@ -16,121 +16,160 @@
     }
   ],
   "paths": {
-    "/users/{id}": {
-      "get": {
-        "summary": "returns simple answer from get",
-        "tags": ["API functions"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "simple parameter",
-            "schema": {
-              "type": "string",
-              "example": "1"
+    "/register": {
+      "post": {
+        "summary": "Path for signing in",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "The user's first name",
+                    "example": "John"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "The user's last name",
+                    "example": "Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "The user's email",
+                    "example": "example@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "The user's password",
+                    "example": "ad#fa34"
+                  }
+                },
+                "required": ["email", "password", "firstName", "lastName"]
+              }
             }
           }
-        ],
-        "description": "parameter id just for test",
+        },
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Ok",
             "content": {
-              "document": {
+              "application/json": {
                 "schema": {
-                  "type": "string",
-                  "example": "some text"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "3f1d65gdfb4cz"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User successfully registered"
+                    }
+                  },
+                  "required": ["message", "id"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  },
+                  "required": ["message"]
                 }
               }
             }
           }
         }
-      },
-      "post": {
-        "summary": "returns simple answer from post",
-        "tags": ["API functions"],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Info"
-              },
-              "example": {
-                "country": "Russia",
-                "city": "Spb"
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "simple parameter",
-            "schema": {
-              "type": "string",
-              "example": "1"
-            }
-          }
-        ],
-        "description": "parameter id just for test",
-        "responses": {
-          "204": {
-            "description": "OK"
-          }
-        }
       }
     },
-    "/register": {
+    "/login": {
       "post": {
-        "summary": "register user",
-        "tags": ["API functions"],
+        "summary": "Path for signing in",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/register"
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "The user's email",
+                    "example": "example@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "The user's password",
+                    "example": "ad#fa34"
+                  }
+                },
+                "required": ["email", "password"]
               }
             }
           }
         },
-        "parameters": [
-          {
-            "firstName": "John",
-            "in": "body",
-            "required": true,
-            "description": "simple parameter",
-            "schema": {
-              "type": "string",
-              "firstName": "John"
-            }
-          },
-          {
-            "lastName": "Doe",
-            "in": "body",
-            "required": true,
-            "description": "simple parameter",
-            "schema": {
-              "type": "string",
-              "lastName": "Doe"
-            }
-          }
-        ],
-        "description": "parameter id just for test",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Ok",
             "content": {
-              "document": {
+              "application/json": {
                 "schema": {
                   "type": "object",
-                  "example": {
-                    "message": "User successfully registered"
-                  }
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully logged in"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "firstName": {
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "lastName": {
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "example@gmail.com"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3f1d65gdfb4cz"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["user", "message"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  },
+                  "required": ["message"]
                 }
               }
             }
@@ -140,34 +179,41 @@
     }
   },
   "components": {
-    "schemas": {
-      "Info": {
-        "type": "object",
-        "properties": {
-          "country": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
+    "responses": {
+      "NotFound": {
+        "description": "The specified resource was not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error",
+              "example": {
+                "message": "User not found"
+              }
+            }
           }
         }
       },
-      "register": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
+      "Unauthorized": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "User not found"
+          }
+        },
+        "required": ["message"]
       }
     }
   }
