@@ -1,6 +1,11 @@
 import express from 'express';
 import { catchErrors } from '../handlers/error';
 import {
+  emailValidator,
+  passwordValidator,
+  nameValidator,
+} from '../moddlewares/validation';
+import {
   REGISTER_ROUTE,
   LOGIN_ROUTE,
   UPDATE_USER_ROUTE,
@@ -20,8 +25,14 @@ import {
 
 const router = express.Router();
 
-router.post(REGISTER_ROUTE, catchErrors(register));
-router.post(LOGIN_ROUTE, catchErrors(login));
+router.post(
+  REGISTER_ROUTE,
+  emailValidator,
+  nameValidator,
+  passwordValidator,
+  catchErrors(register),
+);
+router.post(LOGIN_ROUTE, emailValidator, passwordValidator, catchErrors(login));
 router.put(UPDATE_USER_ROUTE, catchErrors(updateUser));
 router.delete(DELETE_USER_ROUTE, catchErrors(deleteUser));
 router.get(GET_USER_BY_ID_ROUTE, catchErrors(getUserById));

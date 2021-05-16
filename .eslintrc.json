@@ -45,6 +45,7 @@
     ],
     "no-underscore-dangle": 0,
     "consistent-return": 0,
-    "import/newline-after-import": ["error", { "count": 1 }]
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "no-useless-escape": 0
   }
 }
