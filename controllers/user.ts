@@ -77,10 +77,12 @@ export const login = async (req: Request, res: Response) => {
     signed: true,
   }); // cookie will be removed after 24 hours
   res.status(200).json({
-    firstName: user.firstName,
-    lastName: user.lastName,
-    id: user._id,
-    email: user.email,
+    user: {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      id: user._id,
+      email: user.email,
+    },
     message: 'Successfully logged in',
   });
 };

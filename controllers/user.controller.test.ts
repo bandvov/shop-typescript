@@ -13,7 +13,7 @@ import {
 
 const newUserData = {
   email: 'new@aa.aa',
-  password: '123456',
+  password: '123aA$456',
   firstName: 'Vova',
   lastName: 'Vas',
 };
@@ -51,8 +51,6 @@ describe('UserController', () => {
     request(app)
       .get(GET_USER_BY_ID_ROUTE.replace(':id', '') + existingUserId)
       .end((err, res) => {
-        console.log('res', res.body);
-
         expect(res.status).toBe(200);
         expect(JSON.stringify(res.body.user._id)).toBe(
           JSON.stringify(existingUserId),
@@ -67,8 +65,6 @@ describe('UserController', () => {
     request(app)
       .get(GET_USER_BY_ID_ROUTE.replace(':id', '') + fakeUserId)
       .end((err, res) => {
-        console.log('res', res.body);
-
         expect(res.status).toBe(404);
         expect(res.body.message).toBe('User not found');
         done();
@@ -81,7 +77,7 @@ describe('UserController', () => {
       .send({ password: '123456', firstName: 'Vova', lastName: 'Vas' })
       .expect(400)
       .end((err, res) => {
-        expect(res.body.message).toBe('Missing parameters');
+        expect(res.body.message).toBe('Email not provided');
         done();
       });
   });
@@ -93,7 +89,7 @@ describe('UserController', () => {
       .send({ email: 'aa@aa.aa', firstName: 'Vova', lastName: 'Vas' })
       .end((err, res) => {
         expect(res.status).toBe(400);
-        expect(res.body.message).toBe('Missing parameters');
+        expect(res.body.message).toBe('Password not provided');
         done();
       });
   });
@@ -103,7 +99,7 @@ describe('UserController', () => {
       .post(REGISTER_ROUTE)
       .type('form')
       .set('Accept', 'application/json')
-      .send({ email: 'aa@aa.aa', password: '123456', lastName: 'Vas' })
+      .send({ email: 'aa@aa.aa', password: '123aA$456', lastName: 'Vas' })
       .expect('Content-Type', /json/)
       .end((err, res) => {
         expect(res.status).toBe(400);
@@ -117,7 +113,7 @@ describe('UserController', () => {
       .post(REGISTER_ROUTE)
       .type('form')
       .set('Accept', 'application/json')
-      .send({ email: 'aa@aa.aa', password: '123456', firstName: 'Vova' })
+      .send({ email: 'aa@aa.aa', password: '123aA*456', firstName: 'Vova' })
       .expect('Content-Type', /json/)
       .end((err, res) => {
         expect(res.status).toBe(400);
@@ -144,7 +140,7 @@ describe('UserController', () => {
       .post(REGISTER_ROUTE)
       .type('form')
       .set('Accept', 'application/json')
-      .send({ ...newUserData, email: 'bac@hh.ds' })
+      .send({ ...newUserData, email: 'baacscc@hh.ds' })
       .end((err, res) => {
         expect(res.status).toBe(201);
         createdUserId = res.body.id;
@@ -158,7 +154,7 @@ describe('UserController', () => {
       .post(LOGIN_ROUTE)
       .type('form')
       .set('Accept', 'application/json')
-      .send({ email: 'bac@hh.ds', password: newUserData.password })
+      .send({ email: 'baacscc@hh.ds', password: newUserData.password })
       .end((err, res) => {
         expect(res.status).toBe(200);
         expect(res.body.message).toBe('Successfully logged in');
@@ -166,12 +162,12 @@ describe('UserController', () => {
       });
   });
 
-  test('Login user', (done) => {
+  test('Login as not existing user', (done) => {
     request(app)
       .post(LOGIN_ROUTE)
       .type('form')
       .set('Accept', 'application/json')
-      .send({ email: 'notexist@hh.ds', password: '123fdfs' })
+      .send({ email: 'notexist@hh.ds', password: '123f$Adfs' })
       .end((err, res) => {
         expect(res.status).toBe(404);
         expect(res.body.message).toBe('User not found');
@@ -185,7 +181,7 @@ describe('UserController', () => {
       .set('Accept', 'application/json')
       .send({
         email: 'updated@aa.aa',
-        pasword: '1654bfgd',
+        pasword: '1654b$Hfgd',
         firstName: 'updated firstName',
         lastName: 'updated lastName',
         active: false,
