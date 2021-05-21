@@ -16,6 +16,7 @@ export const connectDb = () => {
   mongoose
     .connect(uri, options)
     .then((res) => {
+    console.log(res)
       console.log('Connected to mongodb');
     })
     .catch((err) => {
