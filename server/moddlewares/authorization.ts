@@ -4,8 +4,8 @@ import User from '../models/User';
 
 module.exports = async (req: Request, res: Response, next: Function) => {
   try {
-    if (!req.headers.authorization) throw new Error('Forbidden');
-    const token = req.headers.authorization.replace('Bearer ', '');
+    if (!req.signedCookies) throw new Error('Forbidden');
+    const token = req.signedCookies;
     const { email } = jwt.verify(token, process.env.SALT);
     const userExist = await User.findOne({ email });
 

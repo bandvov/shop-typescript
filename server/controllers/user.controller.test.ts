@@ -41,9 +41,9 @@ describe('UserController', () => {
       .get(GET_ALL_USERS_ROUTE)
       .end((err, res) => {
         expect(res.status).toBe(200);
-        expect(res.body.users[1].firstName).toBe(newUserData.firstName);
-        expect(res.body.users[1].lastName).toBe(newUserData.lastName);
-        expect(res.body.users[1].email).toBe(newUserData.email);
+        expect(res.body.users[0].firstName).toBe(newUserData.firstName);
+        expect(res.body.users[0].lastName).toBe(newUserData.lastName);
+        expect(res.body.users[0].email).toBe(newUserData.email);
         done();
       });
   });
@@ -267,6 +267,15 @@ describe('UserController', () => {
       .end((err, res) => {
         expect(res.status).toBe(404);
         expect(res.body.message).toBe('User not found');
+        done();
+      });
+  });
+  test('If route does not exist should return error', (done) => {
+    request(app)
+      .get('/fakepath')
+      .end((err, res) => {
+        expect(res.status).toBe(404);
+        expect(res.body.message).toBe('Route not found');
         done();
       });
   });

@@ -4,7 +4,7 @@ import { EMAIL_REGEXP, NAME_REGEXP, PASSWORD_REGEXP } from '../configs';
 export const emailValidator = (req: Request, res: Response, next: Function) => {
   const { email } = req.body;
 
-  if (!email || email?.trim() === '') {
+  if (!email || email.trim() === '') {
     res.status(400).json({ message: 'Email not provided' });
   }
 
@@ -16,14 +16,14 @@ export const emailValidator = (req: Request, res: Response, next: Function) => {
 export const nameValidator = (req: Request, res: Response, next: Function) => {
   const { firstName, lastName } = req.body;
 
-  if (!firstName || firstName?.trim() === '') {
+  if (!firstName || firstName.trim() === '') {
     res.status(400).json({ message: 'Missing parameters' });
   }
 
   if (firstName && !NAME_REGEXP.test(String(firstName))) {
     res.status(400).json({ message: 'Missing parameters' });
   }
-  if (!lastName || lastName?.trim() === '') {
+  if (!lastName || lastName.trim() === '') {
     res.status(400).json({ message: 'Missing parameters' });
   }
 
@@ -39,7 +39,7 @@ export const passwordValidator = (
 ) => {
   const { password } = req.body;
 
-  if (!password || password?.trim() === '') {
+  if (!password || password.trim() === '') {
     res.status(400).json({ message: 'Password not provided' });
   }
   if (!PASSWORD_REGEXP.test(String(password))) {
