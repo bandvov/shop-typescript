@@ -12,7 +12,7 @@ export const app = express();
 connectDb();
 
 app.disable('x-powered-by');
-app.use(cors());
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
 app.use(cookieParser('secret'));
 app.use(express.urlencoded({ extended: true }));
