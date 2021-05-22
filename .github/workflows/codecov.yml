@@ -18,11 +18,6 @@ jobs:
   upload:
     runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
 
-    strategy:
-      matrix:
-        nodejs: ["v12.x.x", "v14.x.x"]
-        os: [macOS-latest, windows-latest, ubuntu-latest]
-
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
