@@ -1,12 +1,9 @@
 test:
-  - ./client/src/**/*.spec.js
-  - ./server/**/*.test.js
+  - any: ['./client/src/**/*.spec.js', './server/**/*.test.js']
 frontend:
   - any: ['./client/src/**/*.*']
 backend:
   - any: ['./server/src/**/*.*']
-database:
-  - ./server/models/**.ts
 documentation:
   - any: ['./server/**.md']
   
