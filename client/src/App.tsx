@@ -1,11 +1,12 @@
-import axios from "axios";
+import { ThemeProvider } from 'styled-components';
+import { defaultTheme } from "./themes/defaultTheme";
+import Div from './components/common/div';
 
 function App() {
   return (
-    <div>
-       test
-    <style jsx>{``}</style>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+<Div  />
+    </ThemeProvider>
   );
 }
 
