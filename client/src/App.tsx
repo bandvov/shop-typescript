@@ -1,12 +1,7 @@
-import axios from "axios";
+import React from 'react';
 
-function App() {
-  return (
-    <div>
-       test
-    <style jsx>{``}</style>
-    </div>
-  );
+function App(): React.ReactElement {
+  return <div>test</div>;
 }
 
 export default App;
