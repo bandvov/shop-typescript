@@ -1,9 +1,12 @@
-import { StyledLogin } from './styled/styled-login';
+import styled from 'styled-components';
+import { StyledDiv } from './styled/styled.div';
 
-export function Login(props: any) {
-    return (
-        <StyledLogin {...props} />
-    )
+export const StyledLogin = styled(StyledDiv)`
+  box-shadow: ${(props) => props.theme.darkOutShadow},
+    ${(props) => props.theme.lightOutShadow};
+`;
+export function Login(props: any): React.ReactElement {
+  return <StyledLogin {...props} />;
 }
 
-export default Login
+export default Login;

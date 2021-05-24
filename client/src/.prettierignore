@@ -1,0 +1,5 @@
+/build
+/node_modules
+/src/reportWebVitals.ts
+/src/setupTests.ts
+tsconfig.json

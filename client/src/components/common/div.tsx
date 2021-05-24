@@ -1,9 +1,8 @@
-import { Styleddiv } from '../styled/styled-div';
+import { StyledDiv } from '../styled/styled.div';
+import React from 'react';
 
-function Div(props: any) {
-    return (
-        <Styleddiv {...props} />
-    )
+function Div(props: any): React.ReactElement {
+  return <StyledDiv {...props} />;
 }
 
-export default Div
+export default Div;
