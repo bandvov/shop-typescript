@@ -1,11 +1,12 @@
-import axios from "axios";
+import { ThemeProvider } from 'styled-components';
+import { defaultTheme } from './themes/defaultTheme';
+import LoginPage from './pages/login-page';
 
 function App() {
   return (
-    <div>
-       test
-    <style jsx>{``}</style>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <LoginPage />
+    </ThemeProvider>
   );
 }
 

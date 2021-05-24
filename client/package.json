@@ -16,6 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
+    "styled-components": "^5.3.0",
     "styled-jsx": "^3.4.4",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -24,7 +25,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --color",
+    "lint:fix": "eslint --fix . --color",
+    "prettier": "prettier --write . --ignore-unknown"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +51,12 @@
   "devDependencies": {
     "@types/react": "^17.0.6",
     "@types/react-router-dom": "^5.1.7",
-    "@types/styled-jsx": "^2.2.8"
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.23.2",
+    "prettier": "2.3.0"
   }
 }
