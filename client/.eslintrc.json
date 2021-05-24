@@ -47,6 +47,7 @@
         "ignoreStrings": true,
         "ignoreRegExpLiterals": true
       }
-    ]
+    ],
+    "react/react-in-jsx-scope": "off"
   }
 }

@@ -34,9 +34,6 @@ export const register = async (req: Request, res: Response) => {
 
   res.setHeader('Content-Type', 'application/json');
 
-  if (!firstName || !lastName || !email || !password) {
-    res.status(400).json({ message: 'Missing parameters' });
-  }
   const userExists: IUser | null = await User.findOne({ email });
 
   if (userExists) {
