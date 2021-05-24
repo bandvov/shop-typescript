@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:server": "cd server && npm run test:unit && npm run prettier && npm run lint:fix"
+    "test:server": "cd server && npm run test:unit && npm run prettier && npm run lint:fix",
+    "test:client": "cd client && npm run && npm run prettier && npm run lint:fix"
   },
   "repository": {
     "type": "git",
