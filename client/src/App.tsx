@@ -1,11 +1,11 @@
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from "./themes/defaultTheme";
-import Div from './components/common/div';
+import LoginPage from './pages/login-page';
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-<Div  />
+      <LoginPage />
     </ThemeProvider>
   );
 }

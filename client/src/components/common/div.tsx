@@ -1,4 +1,4 @@
-import { Styleddiv } from '../styled-components/styled-div';
+import { Styleddiv } from '../styled/styled-div';
 
 function Div(props: any) {
     return (
