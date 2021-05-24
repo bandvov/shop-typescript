@@ -46,6 +46,21 @@
     "no-underscore-dangle": 0,
     "consistent-return": 0,
     "import/newline-after-import": ["error", { "count": 1 }],
-    "no-useless-escape": 0
+    "no-useless-escape": 0,
+    "lines-around-comment": [
+      "error",
+      {
+        "beforeBlockComment": true,
+        "afterBlockComment": true,
+        "beforeLineComment": true,
+        "afterLineComment": true,
+        "allowBlockStart": true,
+        "allowBlockEnd": true,
+        "allowObjectStart": true,
+        "allowObjectEnd": true,
+        "allowArrayStart": true,
+        "allowArrayEnd": true
+      }
+    ],
   }
 }
