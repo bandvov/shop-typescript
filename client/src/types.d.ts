@@ -6,4 +6,13 @@ interface IProps {
   justify?: string;
   align?: string;
   borderRadius?: string;
+  padding?: string;
+  border?: string;
+  outline?: string;
+  height?: string;
+  error?: boolean;
+  direction?: string;
+  helperText?: string;
+  showHelperText?: boolean;
+  placeholder?: string;
 }

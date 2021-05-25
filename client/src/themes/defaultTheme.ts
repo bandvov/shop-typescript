@@ -19,25 +19,34 @@ const defaultTheme: DefaultTheme = {
   lightInsetShadow: lIGHT_INSET_SHADOW,
   width: '100vw',
   minHeight: '100vh',
+  padding: {
+    primary: '0.5rem 1rem',
+    secondary: '1rem',
+  },
   borderRadius: {
     primary: '5px',
-    secondary: '5px',
+    secondary: '15px',
+  },
+  border: {
+    primary: {
+      default: '0.5px solid blue',
+      error: '0.5px solid red',
+    },
+    secondary: {
+      default: '1px solid blue',
+      error: '1px solid red',
+    },
   },
   fontSize: {
     small: '8px',
     normal: '13px',
   },
-  colors: {
-    button: {
-      background: {
-        primary: 'linear-gradient(rgb(0,255,255,rgb(0,128,255)))',
-      },
-      border: {
-        primary: '0.5px',
-      },
-      color: {
-        primary: 'white',
-      },
+  button: {
+    background: {
+      primary: 'linear-gradient(rgb(0,255,255,rgb(0,128,255)))',
+    },
+    color: {
+      primary: 'white',
     },
   },
 };
