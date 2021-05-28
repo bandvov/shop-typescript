@@ -17,8 +17,9 @@ const defaultTheme: DefaultTheme = {
   lightOutShadow: LIGHT_OUT_SHADOW,
   darkInsetShadow: DARK_INSET_SHADOW,
   lightInsetShadow: lIGHT_INSET_SHADOW,
-  width: '100vw',
-  minHeight: '100vh',
+  
+  width: '100%',
+  minHeight: '100%',
   padding: {
     primary: '0.5rem 1rem',
     secondary: '1rem',
@@ -29,8 +30,8 @@ const defaultTheme: DefaultTheme = {
   },
   border: {
     primary: {
-      default: '0.5px solid blue',
-      error: '0.5px solid red',
+      default: '1px solid blue',
+      error: '1px solid red',
     },
     secondary: {
       default: '1px solid blue',
@@ -39,7 +40,7 @@ const defaultTheme: DefaultTheme = {
   },
   fontSize: {
     small: '8px',
-    normal: '13px',
+    normal: '16px',
   },
   button: {
     background: {

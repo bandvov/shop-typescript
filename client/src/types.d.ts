@@ -15,4 +15,6 @@ interface IProps {
   helperText?: string;
   showHelperText?: boolean;
   placeholder?: string;
+  fontSize?: string;
+  margin?: string;
 }
