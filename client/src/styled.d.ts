@@ -5,32 +5,43 @@ declare module 'styled-components' {
     background?: string;
     width?: string;
     minHeight?: string;
+    inputHeight?: string;
     darkOutShadow?: string;
     lightOutShadow?: string;
     darkInsetShadow?: string;
     lightInsetShadow?: string;
-    borderRadius?: {
+    padding: {
       primary?: string;
       secondary?: string;
     };
-    error?: string;
+    borderRadius: {
+      primary?: string;
+      secondary?: string;
+    };
+    border: {
+      primary: {
+        default?: string;
+        error?: string;
+      };
+      secondary: {
+        default?: string;
+        error?: string;
+      };
+    };
+    error: string;
     fontSize: {
       small?: string;
       normal?: string;
     };
-    colors: {
-      button: {
-        background?: {
-          primary?: string;
-          secondary?: string;
-        };
-        border?: {
-          primary: string;
-        };
-        color?: {
-          primary: string;
-        };
+    button: {
+      background?: {
+        primary?: string;
+        secondary?: string;
       };
+      color?: {
+        primary?: string;
+      };
+      height?: string;
     };
   }
 }
