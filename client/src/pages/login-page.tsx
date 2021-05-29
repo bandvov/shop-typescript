@@ -3,14 +3,35 @@ import Login from '../components/login';
 import { Input } from '../components/common/text-input';
 import { useState } from 'react';
 import Button from '../components/common/button';
-import { ERROR_MESSAGE_COLOR } from '../configs/constants';
+import { ERROR_MESSAGE_COLOR, BASE_API_URL } from '../configs/constants';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 function LoginPage(): React.ReactElement {
-  const [loginError, setLoginError] = useState<string>('dasdas');
+  const [loginError, setLoginError] = useState<string>('');
   const [userData, setUserData] = useState<IUser>({ email: '', password: '' });
 
+  const dispatch = useDispatch();
+
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    setUserData({
+      ...userData,
+      [e.target.name.trim().toLowerCase()]: e.target.value,
+    });
+  };
+  const submitHandler = async () => {
+    await axios
+      .post(BASE_API_URL + '/login', userData)
+      .then((res) => {
+        if (res) {
+          dispatch(res);
+        }
+        console.log('res', res);
+      })
+      .catch((e) => {
+        setLoginError(e.response.data.message);
+        throw e.response.data.message;
+      });
   };
 
   return (
@@ -30,9 +51,9 @@ function LoginPage(): React.ReactElement {
             onChange={changeHandler}
             placeholder="some placeholder"
             helperText={'hello'}
-            error
+            error={true}
           />
-          <Button>Sign In</Button>
+          <Button onClick={submitHandler}>Sign In</Button>
           <div
             style={{
               height: '30px',
