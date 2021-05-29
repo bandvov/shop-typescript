@@ -17,7 +17,7 @@ const defaultTheme: DefaultTheme = {
   lightOutShadow: LIGHT_OUT_SHADOW,
   darkInsetShadow: DARK_INSET_SHADOW,
   lightInsetShadow: lIGHT_INSET_SHADOW,
-  
+
   width: '100%',
   minHeight: '100%',
   padding: {
@@ -44,11 +44,13 @@ const defaultTheme: DefaultTheme = {
   },
   button: {
     background: {
-      primary: 'linear-gradient(rgb(0,255,255,rgb(0,128,255)))',
+      primary:
+        'linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,255,255,1) 0%, rgba(0,128,255,1) 100%);',
     },
     color: {
       primary: 'white',
     },
+    height: '34px',
   },
 };
 
