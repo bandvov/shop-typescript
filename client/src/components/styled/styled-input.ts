@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledInput = styled.input<IProps>`
-  font-size: ${(props)=>props.fontSize || props.theme.fontSize.normal};
+  font-size: ${(props) => props.fontSize || props.theme.fontSize.normal};
   background: ${(props) => props.background || props.theme.background};
-  width: ${(props) => props.width };
+  width: ${(props) => props.width};
   height: ${(props) => props.height || props.theme.inputHeight};
   box-shadow: ${(props) => props.theme.darkInsetShadow},
     ${(props) => props.theme.lightInsetShadow};
@@ -17,7 +17,7 @@ export const StyledInput = styled.input<IProps>`
   outline: ${(props) => props.outline || 'none'};
   color: ${(props) => (props.error ? props.theme.error : '')};
   position: relative;
-  ::placeholder{
-color:${(props)=>props.error?props.theme.error:''}
+  ::placeholder {
+    color: ${(props) => (props.error ? props.theme.error : '')};
   }
 `;

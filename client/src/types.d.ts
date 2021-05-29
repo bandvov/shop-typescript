@@ -17,4 +17,12 @@ interface IProps {
   placeholder?: string;
   fontSize?: string;
   margin?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  children?: React.ReactChildren | React.ReactChild;
+  onClick?: any;
+  disabled?: boolean;
+  name?: string;
+}
+interface IUser {
+  [key]?: string;
 }
