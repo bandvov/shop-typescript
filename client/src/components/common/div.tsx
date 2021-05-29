@@ -1,4 +1,4 @@
-import { StyledDiv } from '../styled/styled.div';
+import { StyledDiv } from '../styled/styled-div';
 import React from 'react';
 
 function Div(props: any): React.ReactElement {
