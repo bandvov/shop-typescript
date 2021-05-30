@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import Checkbox from '../components/common/checkbox';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -31,6 +32,7 @@ const validationSchema = Yup.object({
     .min(8)
     .max(20)
     .matches(PASSWORD_REGEXP, 'Invalid password format'),
+  agreedWithTerms: Yup.bool().isTrue(),
 });
 
 function RegisterPage(): React.ReactElement {
@@ -44,6 +46,7 @@ function RegisterPage(): React.ReactElement {
       lastName: '',
       email: '',
       password: '',
+      agreedWithTerms: false,
     },
     validationSchema,
     validateOnChange: true,
@@ -64,6 +67,10 @@ function RegisterPage(): React.ReactElement {
         });
     },
   });
+  const inputHandler = (e: React.SyntheticEvent) => {
+    setLoginError('');
+    handleChange(e);
+  };
 
   return (
     <Div direction={'column'} minHeight="100vh">
@@ -75,7 +82,7 @@ function RegisterPage(): React.ReactElement {
               type="text"
               error={!!errors.firstName}
               name="firstName"
-              onChange={handleChange}
+              onChange={inputHandler}
               placeholder="Enter first name..."
               helperText={errors.firstName}
               showHelperText
@@ -85,7 +92,7 @@ function RegisterPage(): React.ReactElement {
               type="text"
               error={!!errors.lastName}
               name="lastName"
-              onChange={handleChange}
+              onChange={inputHandler}
               placeholder="Enter last name..."
               helperText={errors.lastName}
               showHelperText
@@ -95,7 +102,7 @@ function RegisterPage(): React.ReactElement {
               type="text"
               error={!!errors.email}
               name="email"
-              onChange={handleChange}
+              onChange={inputHandler}
               placeholder="Enter email..."
               helperText={errors.email}
               showHelperText
@@ -105,11 +112,29 @@ function RegisterPage(): React.ReactElement {
               type="text"
               error={!!errors.password}
               name="password"
-              onChange={handleChange}
+              onChange={inputHandler}
               placeholder="Enter password..."
               helperText={errors.password}
               value={values.password}
             />
+            <div>
+              <label>
+                <Checkbox
+                  name="agreedWithTerms"
+                  checked={values.agreedWithTerms}
+                  onChange={inputHandler}
+                />
+                <span style={{ fontSize: '13px' }}>
+                  By checking this checkbox you accept{' '}
+                </span>
+              </label>
+              <Link to="/terms">Terms and conditions</Link>
+            </div>
+            {errors.agreedWithTerms && (
+              <span style={{ color: ERROR_MESSAGE_COLOR }}>
+                {'Please agree with terms'}
+              </span>
+            )}
             <Button type="submit">Sign Up</Button>
           </form>
           <div
