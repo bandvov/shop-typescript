@@ -3,57 +3,89 @@ import Login from '../components/login';
 import { Input } from '../components/common/text-input';
 import { useState } from 'react';
 import Button from '../components/common/button';
-import { ERROR_MESSAGE_COLOR, BASE_API_URL } from '../configs/constants';
+import {
+  ERROR_MESSAGE_COLOR,
+  BASE_API_URL,
+  LOGIN_PATH,
+  EMAIL_REGEXP,
+  PASSWORD_REGEXP,
+} from '../configs/constants';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
+
+const validationSchema = Yup.object({
+  email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
+  password: Yup.string()
+    .required()
+    .min(8)
+    .max(20)
+    .matches(PASSWORD_REGEXP, 'Invalid password format'),
+});
 
 function LoginPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
-  const [userData, setUserData] = useState<IUser>({ email: '', password: '' });
 
   const dispatch = useDispatch();
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserData({
-      ...userData,
-      [e.target.name.trim().toLowerCase()]: e.target.value,
-    });
-  };
-  const submitHandler = async () => {
-    await axios
-      .post(BASE_API_URL + '/login', userData)
-      .then((res) => {
-        if (res) {
-          dispatch(res);
-        }
-        console.log('res', res);
-      })
-      .catch((e) => {
-        setLoginError(e.response.data.message);
-        throw e.response.data.message;
-      });
-  };
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema,
+    validateOnChange: true,
+    onSubmit: (values) => {
+      axios
+        .post(BASE_API_URL + LOGIN_PATH, values, {
+          httpsAgent: true,
+          withCredentials: true,
+        })
+        .then((res) => {
+          if (res) {
+            dispatch(res);
+          }
+          console.log('res', res);
+        })
+        .catch((e) => {
+          if (e) {
+            setLoginError(e.response?.data?.message);
+            throw e.response?.data?.message;
+          }
+        });
+    },
+  });
+  console.log(errors);
 
   return (
     <Div direction={'column'} minHeight="100vh">
       <Login direction={'column'} minHeight="100px" width="300px">
         <h2>Sign In</h2>
         <Div padding="0 3rem 2rem" direction="column">
-          <Input
-            name="email"
-            onChange={changeHandler}
-            placeholder="some placeholder"
-            helperText={'hello'}
-            showHelperText
-          />
-          <Input
-            name="password"
-            onChange={changeHandler}
-            placeholder="some placeholder"
-            helperText={'hello'}
-            error={true}
-          />
-          <Button onClick={submitHandler}>Sign In</Button>
+          <form onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              error={!!errors.email}
+              name="email"
+              onChange={handleChange}
+              placeholder="some placeholder"
+              helperText={errors.email}
+              showHelperText
+              value={values.email}
+            />
+            <Input
+              type="text"
+              error={!!errors.password}
+              name="password"
+              onChange={handleChange}
+              placeholder="some placeholder"
+              helperText={errors.password}
+              value={values.password}
+            />
+            <Button type="submit">Sign In</Button>
+          </form>
           <div
             style={{
               height: '30px',
@@ -74,13 +106,15 @@ function LoginPage(): React.ReactElement {
           >
             <span>Don&apos;t have account?</span>
           </div>
-          <Button
-            background={
-              'linear-gradient(180deg, rgba(157,249,161,1) 0%, rgba(157,249,161,1) 0%, rgba(17,150,70,1) 100%)'
-            }
-          >
-            Sign Up
-          </Button>
+          <Link style={{ width: '100%' }} to="/register">
+            <Button
+              background={
+                'linear-gradient(180deg, rgba(157,249,161,1) 0%, rgba(157,249,161,1) 0%, rgba(17,150,70,1) 100%)'
+              }
+            >
+              Sign Up
+            </Button>
+          </Link>
         </Div>
       </Login>
     </Div>
