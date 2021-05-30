@@ -9,15 +9,22 @@ import {
   LOGIN_PATH,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
+  NAME_REGEXP,
+  REGISTER_PATH,
 } from '../configs/constants';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { REGISTER_PATH } from '../configs/constants';
 
 const validationSchema = Yup.object({
+  firstName: Yup.string()
+    .matches(NAME_REGEXP, 'Invalid first name format')
+    .required(),
+  lastName: Yup.string()
+    .matches(NAME_REGEXP, 'Invalid last name format')
+    .required(),
   email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
   password: Yup.string()
     .required()
@@ -26,24 +33,23 @@ const validationSchema = Yup.object({
     .matches(PASSWORD_REGEXP, 'Invalid password format'),
 });
 
-function LoginPage(): React.ReactElement {
+function RegisterPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
 
   const dispatch = useDispatch();
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
     },
     validationSchema,
     validateOnChange: true,
-    onSubmit: (values) => {
+    onSubmit: (data) => {
       axios
-        .post(BASE_API_URL + LOGIN_PATH, values, {
-          httpsAgent: true,
-          withCredentials: true,
-        })
+        .post(BASE_API_URL + REGISTER_PATH, data)
         .then((res) => {
           if (res) {
             dispatch(res);
@@ -58,14 +64,33 @@ function LoginPage(): React.ReactElement {
         });
     },
   });
-  console.log(errors);
 
   return (
     <Div direction={'column'} minHeight="100vh">
       <Login direction={'column'} minHeight="100px" width="300px">
-        <h2>Sign In</h2>
+        <h2>Sign Up</h2>
         <Div padding="0 3rem 2rem" direction="column">
           <form onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              error={!!errors.firstName}
+              name="firstName"
+              onChange={handleChange}
+              placeholder="Enter first name..."
+              helperText={errors.firstName}
+              showHelperText
+              value={values.firstName}
+            />
+            <Input
+              type="text"
+              error={!!errors.lastName}
+              name="lastName"
+              onChange={handleChange}
+              placeholder="Enter last name..."
+              helperText={errors.lastName}
+              showHelperText
+              value={values.lastName}
+            />
             <Input
               type="text"
               error={!!errors.email}
@@ -85,7 +110,7 @@ function LoginPage(): React.ReactElement {
               helperText={errors.password}
               value={values.password}
             />
-            <Button type="submit">Sign In</Button>
+            <Button type="submit">Sign Up</Button>
           </form>
           <div
             style={{
@@ -105,15 +130,15 @@ function LoginPage(): React.ReactElement {
               justifyContent: 'flex-start',
             }}
           >
-            <span>Don&apos;t have account?</span>
+            <span>Already have account?</span>
           </div>
-          <Link style={{ width: '100%' }} to={REGISTER_PATH}>
+          <Link style={{ width: '100%' }} to={LOGIN_PATH}>
             <Button
               background={
                 'linear-gradient(180deg, rgba(157,249,161,1) 0%, rgba(157,249,161,1) 0%, rgba(17,150,70,1) 100%)'
               }
             >
-              Sign Up
+              Sign In
             </Button>
           </Link>
         </Div>
@@ -122,4 +147,4 @@ function LoginPage(): React.ReactElement {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
