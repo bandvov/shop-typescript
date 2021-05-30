@@ -23,7 +23,8 @@ interface IProps {
   disabled?: boolean;
   name?: string;
   value?: string;
-  type?: 'text' | 'submit' | undefined;
+  type?: 'text' | 'submit' | 'checkbox' | undefined;
+  checked?: boolean;
 }
 interface IUser {
   [key]?: string;

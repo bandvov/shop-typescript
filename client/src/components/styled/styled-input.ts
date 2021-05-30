@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledInput = styled.input<IProps>`
+export const StyledInput = styled.input.attrs({ type: 'text' })<IProps>`
   font-size: ${(props) => props.fontSize || props.theme.fontSize.normal};
   background: ${(props) => props.background || props.theme.background};
   width: ${(props) => props.width};
