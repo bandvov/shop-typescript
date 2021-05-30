@@ -22,6 +22,8 @@ interface IProps {
   onClick?: any;
   disabled?: boolean;
   name?: string;
+  value?: string;
+  type?: 'text' | 'submit' | undefined;
 }
 interface IUser {
   [key]?: string;
