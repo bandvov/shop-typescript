@@ -17,7 +17,7 @@ import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
 const validationSchema = Yup.object({
-  email: Yup.string().required().matches(EMAIL_REGEXP, 'Invalid email format'),
+  email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
   password: Yup.string()
     .required()
     .min(8)
@@ -71,8 +71,9 @@ function LoginPage(): React.ReactElement {
               name="email"
               onChange={handleChange}
               placeholder="some placeholder"
-              helperText={'invalid format'}
+              helperText={errors.email}
               showHelperText
+              value={values.email}
             />
             <Input
               type="text"
