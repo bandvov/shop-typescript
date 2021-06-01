@@ -1,5 +1,4 @@
 import Div from '../components/common/div';
-import Login from '../components/login';
 import { Input } from '../components/common/text-input';
 import { useState } from 'react';
 import Button from '../components/common/button';
@@ -18,6 +17,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import Checkbox from '../components/common/checkbox';
+import Registration from '../components/registration';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -74,9 +74,14 @@ function RegisterPage(): React.ReactElement {
 
   return (
     <Div direction={'column'} minHeight="100vh">
-      <Login direction={'column'} minHeight="100px" width="300px">
+      <Registration
+        borderRadius={'15px'}
+        direction={'column'}
+        minHeight="100px"
+        width="300px"
+      >
         <h2>Sign Up</h2>
-        <Div padding="0 3rem 2rem" direction="column">
+        <Div borderRadius="15px" padding="0 3rem 2rem" direction="column">
           <form onSubmit={handleSubmit}>
             <Input
               type="text"
@@ -167,7 +172,7 @@ function RegisterPage(): React.ReactElement {
             </Button>
           </Link>
         </Div>
-      </Login>
+      </Registration>
     </Div>
   );
 }
