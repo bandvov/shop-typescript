@@ -6,8 +6,7 @@ export const StyledLogin = styled(StyledDiv)`
     ${(props) => props.theme.lightOutShadow};
   padding: ${(props) => props.padding || ''};
 `;
-export function Login(props: any): React.ReactElement {
+function Login(props: any): React.ReactElement {
   return <StyledLogin {...props} />;
 }
-
 export default Login;
