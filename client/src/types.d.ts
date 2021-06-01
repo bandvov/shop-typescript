@@ -25,6 +25,10 @@ interface IProps {
   value?: string;
   type?: 'text' | 'submit' | 'checkbox' | undefined;
   checked?: boolean;
+  position?: string;
+  top?: string | number;
+  left?: string | number;
+  color?: string;
 }
 interface IUser {
   [key]?: string;

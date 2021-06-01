@@ -15,6 +15,7 @@ declare module 'styled-components' {
       secondary?: string;
     };
     borderRadius: {
+      default?: string;
       primary?: string;
       secondary?: string;
     };
