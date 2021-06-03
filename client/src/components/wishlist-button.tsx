@@ -17,7 +17,6 @@ function WishlistButton(): React.ReactElement {
       >
         <FontAwesomeIcon size="1x" icon={faHeart} />
       </Button>
-      
     </Link>
   );
 }

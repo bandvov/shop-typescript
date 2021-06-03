@@ -4,10 +4,10 @@ import Button from './common/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 
-function ProfileButton({active}:{active?: boolean}): React.ReactElement {
+function ProfileButton({ active }: { active?: boolean }): React.ReactElement {
   return (
     <Link to="/profile">
-      <Button      
+      <Button
         active={active}
         margin="0 0 0 1rem"
         borderRadius="20px"
@@ -16,9 +16,8 @@ function ProfileButton({active}:{active?: boolean}): React.ReactElement {
         background="none"
         color="black"
       >
-        <FontAwesomeIcon  icon={faUser} />
+        <FontAwesomeIcon icon={faUser} />
       </Button>
-      
     </Link>
   );
 }

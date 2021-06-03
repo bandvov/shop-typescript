@@ -10,14 +10,15 @@ export const StyledButton = styled.button<IProps>`
   border-radius: ${(props) => props.borderRadius || '16px'};
   cursor: pointer;
   margin: ${(props) => props.margin || '0.5rem 0'};
-  box-shadow: ${(props) => !props.active ? props.theme.darkOutShadow : props.theme.lightInsetShadow},
-    ${(props) =>!props.active ? props.theme.lightOutShadow : props.theme.darkInsetShadow};
-  color: ${(props)=>props.active ? 'blue' : ''};
+  box-shadow: ${(props) =>
+      !props.active ? props.theme.darkOutShadow : props.theme.lightInsetShadow},
+    ${(props) =>
+      !props.active ? props.theme.lightOutShadow : props.theme.darkInsetShadow};
+  color: ${(props) => (props.active ? 'blue' : '')};
   &:active {
     box-shadow: none;
     color: blue;
-    box-shadow: ${(props) =>  props.theme.lightInsetShadow},
-    ${(props) => props.theme.darkInsetShadow};
-
+    box-shadow: ${(props) => props.theme.lightInsetShadow},
+      ${(props) => props.theme.darkInsetShadow};
   }
 `;

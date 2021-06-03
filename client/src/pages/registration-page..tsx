@@ -79,6 +79,7 @@ function RegisterPage(): React.ReactElement {
         direction={'column'}
         minHeight="100px"
         width="300px"
+        padding="0 1rem"
       >
         <h2>Sign Up</h2>
         <Div borderRadius="15px" padding="0 3rem 2rem" direction="column">

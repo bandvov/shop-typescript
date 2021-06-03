@@ -66,6 +66,7 @@ function LoginPage(): React.ReactElement {
         direction={'column'}
         minHeight="100px"
         width="300px"
+        padding="0 1rem"
       >
         <h2>Sign In</h2>
         <Div padding="0 3rem 2rem" direction="column">
