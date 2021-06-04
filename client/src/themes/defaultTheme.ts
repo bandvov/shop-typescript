@@ -21,10 +21,12 @@ const defaultTheme: DefaultTheme = {
   width: '100%',
   minHeight: '100%',
   padding: {
+    default: '0',
     primary: '0.5rem 1rem',
     secondary: '1rem',
   },
   borderRadius: {
+    default: '0',
     primary: '5px',
     secondary: '15px',
   },

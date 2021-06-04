@@ -9,13 +9,13 @@ import {
   LOGIN_PATH,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
+  REGISTER_PATH,
 } from '../configs/constants';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { REGISTER_PATH } from '../configs/constants';
 
 const validationSchema = Yup.object({
   email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
@@ -31,7 +31,7 @@ function LoginPage(): React.ReactElement {
 
   const dispatch = useDispatch();
 
-  const { values, errors, handleChange, handleSubmit } = useFormik({
+  const { values, errors, handleChange, handleSubmit, touched } = useFormik({
     initialValues: {
       email: '',
       password: '',
@@ -58,17 +58,22 @@ function LoginPage(): React.ReactElement {
         });
     },
   });
-  console.log(errors);
 
   return (
     <Div direction={'column'} minHeight="100vh">
-      <Login direction={'column'} minHeight="100px" width="300px">
+      <Login
+        borderRadius={'15px'}
+        direction={'column'}
+        minHeight="100px"
+        width="300px"
+        padding="0 1rem"
+      >
         <h2>Sign In</h2>
         <Div padding="0 3rem 2rem" direction="column">
           <form onSubmit={handleSubmit}>
             <Input
               type="text"
-              error={!!errors.email}
+              error={!!(errors.email && touched.email)}
               name="email"
               onChange={handleChange}
               placeholder="Enter email..."
@@ -78,7 +83,7 @@ function LoginPage(): React.ReactElement {
             />
             <Input
               type="text"
-              error={!!errors.password}
+              error={!!(errors.password && touched.password)}
               name="password"
               onChange={handleChange}
               placeholder="Enter password..."

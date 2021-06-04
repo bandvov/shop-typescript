@@ -9,11 +9,16 @@ export const StyledButton = styled.button<IProps>`
   border: none;
   border-radius: ${(props) => props.borderRadius || '16px'};
   cursor: pointer;
-  transition: 0.2s ease-in-out;
-  margin: 0.5rem 0;
-  box-shadow: ${(props) => props.theme.darkOutShadow},
-    ${(props) => props.theme.lightOutShadow};
+  margin: ${(props) => props.margin || '0.5rem 0'};
+  box-shadow: ${(props) =>
+      !props.active ? props.theme.darkOutShadow : props.theme.lightInsetShadow},
+    ${(props) =>
+      !props.active ? props.theme.lightOutShadow : props.theme.darkInsetShadow};
+  color: ${(props) => (props.active ? 'blue' : '')};
   &:active {
     box-shadow: none;
+    color: blue;
+    box-shadow: ${(props) => props.theme.lightInsetShadow},
+      ${(props) => props.theme.darkInsetShadow};
   }
 `;
