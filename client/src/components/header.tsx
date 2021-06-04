@@ -9,7 +9,7 @@ import logo from '../images/LOGO.svg';
 function Header() {
   return (
     <Div padding="0" direction="column">
-      <Div justify="center" width="100vw" minHeight="40px" background="black">
+      <Div justify="center" width="98vw" minHeight="40px" background="black">
         <Div background="black" width="85vw" justify="space-between">
           <Div background="black">
             <Link

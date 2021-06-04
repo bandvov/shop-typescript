@@ -9,7 +9,7 @@ function ProfileButton({ active }: { active?: boolean }): React.ReactElement {
     <Link to="/profile">
       <Button
         active={active}
-        margin="0 0 0 1rem"
+        margin="0 1rem"
         borderRadius="20px"
         width="30px"
         height="30px"
