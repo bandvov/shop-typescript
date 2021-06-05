@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { StyledDiv } from './styled/styled-div';
+import React from 'react';
 
 const StyledCard = styled(StyledDiv)`
   width: 19.9%;
@@ -17,7 +18,7 @@ const StyledCard = styled(StyledDiv)`
   }
 `;
 
-function Card(props: IProps) {
+function Card(props: IProps): React.ReactElement {
   return <StyledCard {...props} />;
 }
 

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const products = [
   {
     images: [
-      'https://media.architecturaldigest.com/photos/5f443ebcc73b004522ddb536/1:1/w_3000,h_3000,c_limit/95525_talclinen_v1.jpg',
+      'https://cdn.shopify.com/s/files/1/0527/0791/8011/files/C-WE-057b_170x170.jpg',
     ],
     _id: 124543,
     name: 'asdasd',
@@ -129,10 +129,11 @@ function HomePage(): React.ReactElement {
       >
         {products.map((product) => (
           <Card
-            margin={'0 .7rem'}
+            margin={'.7rem'}
             padding="1rem"
             height="100%"
             key={product.name}
+            borderRadius="10px"
           >
             <Div direction="column">
               <Link to={`/${product._id}`}>

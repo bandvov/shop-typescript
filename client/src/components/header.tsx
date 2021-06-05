@@ -6,7 +6,7 @@ import deliveryIcon from '../images/delivery-icon.svg';
 import phone from '../images/phone.svg';
 import logo from '../images/LOGO.svg';
 
-function Header() {
+function Header(): React.ReactElement {
   return (
     <Div padding="0" direction="column">
       <Div justify="center" width="98vw" minHeight="40px" background="black">

@@ -1,6 +1,5 @@
 import React from 'react';
 import Div from '../components/common/div';
-import SearchPanel from '../components/searchpanel';
 import WishlistButton from '../components/wishlist-button';
 import ProfileButton from '../components/profile-button';
 
