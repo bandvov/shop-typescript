@@ -20,9 +20,9 @@ export const getUserById = async (req: Request, res: Response) => {
   res.setHeader('Content-Type', 'application/json');
 
   if (!user) {
-    res.status(404).json({ message: 'User not found' });
+    return res.status(404).json({ message: 'User not found' });
   }
-  res.status(200).json({ user });
+  return res.status(200).json({ user });
 };
 export const register = async (req: Request, res: Response) => {
   const {
@@ -37,7 +37,7 @@ export const register = async (req: Request, res: Response) => {
   const userExists: IUser | null = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400).json({ message: 'User already exist' });
+    return res.status(400).json({ message: 'User already exist' });
   }
   const user: IUser = await new User({
     firstName,
@@ -46,7 +46,7 @@ export const register = async (req: Request, res: Response) => {
     password: sha256(password + SALT),
   }).save();
 
-  res
+  return res
     .status(201)
     .json({ message: 'User successfully registered', id: user._id });
 };
@@ -61,19 +61,19 @@ export const login = async (req: Request, res: Response) => {
     password: sha256(password + SALT),
   });
   if (!user) {
-    res.status(404).json({ message: 'User not found' });
+    return res.status(404).json({ message: 'User not found' });
   }
   const token: string = jwt.sign({ email: user.email }, JWT_SALT, {
     expiresIn: JWT_EXPIRES_IN,
   });
 
-  res.cookie('access-token', `Bearer ${token}`, {
-    domain: 'localhost:3000',
+  res.cookie('access-token', token, {
     expires: new Date(Date.now() + 24 * 3600000),
     secure: true,
     signed: true,
+    httpOnly: true,
   }); // cookie will be removed after 24 hours
-  res.status(200).json({
+  return res.status(200).json({
     user: {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -112,7 +112,7 @@ export const updateUser = async (req: Request, res: Response) => {
   const userExists: IUser | null = await User.findById(id);
 
   if (!userExists) {
-    res.status(404).json({ message: 'User not found' });
+    return res.status(404).json({ message: 'User not found' });
   }
 
   const user: IUser | null = await User.findByIdAndUpdate(
@@ -134,7 +134,9 @@ export const updateUser = async (req: Request, res: Response) => {
 
   if (user) {
     user.password = undefined;
-    res.status(200).json({ message: 'User data successfully updated', user });
+    return res
+      .status(200)
+      .json({ message: 'User data successfully updated', user });
   }
 };
 
@@ -146,5 +148,5 @@ export const deleteUser = async (req: Request, res: Response) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  res.status(200).json({ message: 'User successfully deleted' });
+  return res.status(200).json({ message: 'User successfully deleted' });
 };

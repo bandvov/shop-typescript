@@ -1,12 +1,19 @@
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from './themes/defaultTheme';
-import LoginPage from './pages/login-page';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import Routes from './routes';
 
 function App(): React.ReactElement {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <LoginPage />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={defaultTheme}>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

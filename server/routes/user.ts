@@ -5,6 +5,7 @@ import {
   passwordValidator,
   nameValidator,
 } from '../moddlewares/validation';
+
 import {
   REGISTER_ROUTE,
   LOGIN_ROUTE,

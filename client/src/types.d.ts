@@ -18,10 +18,19 @@ interface IProps {
   fontSize?: string;
   margin?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  children?: React.ReactChildren | React.ReactChild;
+  children?: React.ReactChild[] | React.ReactChild;
   onClick?: any;
   disabled?: boolean;
   name?: string;
+  value?: string;
+  type?: 'text' | 'submit' | 'checkbox' | undefined;
+  checked?: boolean;
+  position?: string;
+  top?: string | number;
+  left?: string | number;
+  color?: string;
+  active?: boolean;
+  wrap?: string;
 }
 interface IUser {
   [key]?: string;

@@ -11,10 +11,12 @@ declare module 'styled-components' {
     darkInsetShadow?: string;
     lightInsetShadow?: string;
     padding: {
+      default?: string;
       primary?: string;
       secondary?: string;
     };
     borderRadius: {
+      default?: string;
       primary?: string;
       secondary?: string;
     };

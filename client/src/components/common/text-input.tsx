@@ -3,6 +3,7 @@ import { StyledInput } from '../styled/styled-input';
 import { ERROR_MESSAGE_COLOR } from '../../configs/constants';
 
 export function Input({
+  type,
   helperText,
   showHelperText,
   ...props
