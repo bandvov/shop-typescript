@@ -18,7 +18,7 @@ interface IProps {
   fontSize?: string;
   margin?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  children?: React.ReactChildren | React.ReactChild;
+  children?: React.ReactChild[] | React.ReactChild;
   onClick?: any;
   disabled?: boolean;
   name?: string;
@@ -30,6 +30,7 @@ interface IProps {
   left?: string | number;
   color?: string;
   active?: boolean;
+  wrap?: string;
 }
 interface IUser {
   [key]?: string;

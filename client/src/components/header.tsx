@@ -6,7 +6,7 @@ import deliveryIcon from '../images/delivery-icon.svg';
 import phone from '../images/phone.svg';
 import logo from '../images/LOGO.svg';
 
-function Header() {
+function Header(): React.ReactElement {
   return (
     <Div padding="0" direction="column">
       <Div justify="center" width="98vw" minHeight="40px" background="black">
@@ -79,7 +79,7 @@ function Header() {
         <div style={{ height: '100%' }}>
           <img src={logo} />
         </div>
-        <SearchPanel margin="0 0 0 1rem" width="57vw" height="50px" />
+        <SearchPanel margin="0 0 0 1rem" width="100%" height="50px" />
         <SearchbarContainer />
       </Div>
     </Div>

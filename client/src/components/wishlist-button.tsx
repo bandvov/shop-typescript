@@ -8,7 +8,7 @@ function WishlistButton(): React.ReactElement {
   return (
     <Link to="/wishlist">
       <Button
-        margin="0 1rem"
+        margin="0 0 0 1rem"
         borderRadius="20px"
         width="30px"
         height="30px"
