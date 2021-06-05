@@ -79,7 +79,7 @@ function Header() {
         <div style={{ height: '100%' }}>
           <img src={logo} />
         </div>
-        <SearchPanel margin="0 0 0 1rem" width="57vw" height="50px" />
+        <SearchPanel margin="0 0 0 1rem" width="100%" height="50px" />
         <SearchbarContainer />
       </Div>
     </Div>

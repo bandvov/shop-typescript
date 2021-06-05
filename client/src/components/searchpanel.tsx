@@ -19,7 +19,7 @@ const StyledInput = styled.input<IProps>`
 
 function SearchPanel(props: any): React.ReactElement {
   return (
-    <Div padding={'0'} position="relative" borderRadius="35px">
+    <Div padding={'0'} width="100%" position="relative" borderRadius="35px">
       <FontAwesomeIcon
         style={{ position: 'absolute', top: '18px', left: '35px' }}
         icon={faSave}

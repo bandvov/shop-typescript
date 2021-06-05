@@ -14,4 +14,6 @@ export const StyledDiv = styled.div<IProps>`
   border-radius: ${(props) => props.borderRadius};
   flex-direction: ${(props) => props.direction || 'row'};
   border: ${(props) => props?.border || 'none'};
+  flex-wrap: ${(props) => props.wrap || ''};
+  margin: ${(props) => props.margin};
 `;

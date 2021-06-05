@@ -30,6 +30,7 @@ interface IProps {
   left?: string | number;
   color?: string;
   active?: boolean;
+  wrap?: string;
 }
 interface IUser {
   [key]?: string;
