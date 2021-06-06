@@ -21,7 +21,7 @@ const productSchema = new Schema(
       required: true,
     },
     discount: {
-      type: Boolean,
+      type: String,
     },
     discountAvailable: {
       type: Boolean,
@@ -59,10 +59,10 @@ const productSchema = new Schema(
       required: true,
     },
     sleepingPlace: {
-      type: String,
+      type: Boolean,
     },
     seating: {
-      type: String,
+      type: Boolean,
     },
     frame: {
       type: String,
