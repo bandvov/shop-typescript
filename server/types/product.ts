@@ -8,14 +8,14 @@ export interface IProduct extends Document {
   discount: string;
   description: string;
   available: boolean;
-  availableCount: string;
+  availableCount: number;
   favorites: string[];
   colors: string[];
   images: string[];
   thumbnails: string[];
   sizes: string[];
-  sleepingPlace: string;
-  seating: string;
+  sleepingPlace: boolean;
+  seating: boolean;
   frame: string;
   mechanism: string;
   legsMaterial: string;
