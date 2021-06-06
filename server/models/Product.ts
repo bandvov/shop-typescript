@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { IProduct } from '../types/user';
+import { IProduct } from '../types/product';
 
 const productSchema = new Schema(
   {
@@ -22,6 +22,10 @@ const productSchema = new Schema(
     },
     discount: {
       type: Boolean,
+    },
+    discountAvailable: {
+      type: Boolean,
+      default: false,
     },
     description: {
       type: String,
@@ -52,6 +56,7 @@ const productSchema = new Schema(
     },
     sizes: {
       type: [String],
+      required: true,
     },
     sleepingPlace: {
       type: String,
@@ -92,6 +97,10 @@ const productSchema = new Schema(
     },
     manufacturer: {
       type: String,
+    },
+    price: {
+      type: Number,
+      required: true,
     },
   },
 
