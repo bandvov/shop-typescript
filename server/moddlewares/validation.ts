@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { EMAIL_REGEXP, NAME_REGEXP, PASSWORD_REGEXP } from '../configs';
+import { EMAIL_REGEXP, NAME_REGEXP, PASSWORD_REGEXP } from '../constants';
 
 export const emailValidator = (req: Request, res: Response, next: Function) => {
   const { email } = req.body;

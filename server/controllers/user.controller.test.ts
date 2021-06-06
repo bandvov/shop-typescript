@@ -9,7 +9,7 @@ import {
   UPDATE_USER_ROUTE,
   REGISTER_ROUTE,
   LOGIN_ROUTE,
-} from '../configs';
+} from '../constants';
 
 const newUserData = {
   email: 'new@aa.aa',
