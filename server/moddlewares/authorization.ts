@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { Response, Request } from 'express';
 import User from '../models/User';
 
-module.exports = async (req: Request, res: Response, next: Function) => {
+export const auth = async (req: Request, res: Response, next: Function) => {
   try {
     if (!req.signedCookies) throw new Error('Forbidden');
     const token = req.signedCookies;

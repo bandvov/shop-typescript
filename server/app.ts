@@ -6,6 +6,7 @@ import userRouter from './routes/user';
 import * as swaggerDocument from './swagger/openapi.json';
 import { connectDb } from './db';
 import { notFound } from './handlers/error';
+import productRouter from './routes/product';
 
 export const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(cookieParser('secret'));
 app.use(express.urlencoded({ extended: true }));
 app.use(userRouter);
+app.use(productRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/', (request, response) => {
   response.status(200).json({ text: 'Hello world!' });
