@@ -13,7 +13,7 @@ import {
   DELETE_USER_ROUTE,
   GET_USER_BY_ID_ROUTE,
   GET_ALL_USERS_ROUTE,
-} from '../configs';
+} from '../constants';
 
 import {
   register,
