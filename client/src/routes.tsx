@@ -5,6 +5,7 @@ import { LOGIN_PATH, REGISTER_PATH } from './configs/constants';
 import RegisterPage from './pages/registration-page.';
 import HomePage from './pages/home-page';
 import Div from './components/common/div';
+import Footer from './components/footer';
 
 export function Routes(): React.ReactElement {
   return (
@@ -25,9 +26,7 @@ export function Routes(): React.ReactElement {
           detail page
         </Route>
       </Switch>
-      <Div padding="0" minHeight="10vh" border="5px solid green">
-        footer
-      </Div>
+  <Footer />
     </div>
   );
 }

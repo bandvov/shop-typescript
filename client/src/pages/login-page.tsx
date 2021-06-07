@@ -41,14 +41,13 @@ function LoginPage(): React.ReactElement {
     onSubmit: (values) => {
       axios
         .post(BASE_API_URL + LOGIN_PATH, values, {
-          httpsAgent: true,
           withCredentials: true,
         })
         .then((res) => {
           if (res) {
             dispatch(res);
+            console.log('res', res);
           }
-          console.log('res', res);
         })
         .catch((e) => {
           if (e) {

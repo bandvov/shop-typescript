@@ -16,4 +16,6 @@ export const StyledDiv = styled.div<IProps>`
   border: ${(props) => props?.border || 'none'};
   flex-wrap: ${(props) => props.wrap || ''};
   margin: ${(props) => props.margin};
+  color: ${(props)=>props.color || 'black'};
+  font-size:${(props)=>props.fontSize};
 `;
