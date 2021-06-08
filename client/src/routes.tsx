@@ -26,7 +26,7 @@ export function Routes(): React.ReactElement {
           detail page
         </Route>
       </Switch>
-  <Footer />
+      <Footer />
     </div>
   );
 }
