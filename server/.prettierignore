@@ -1,9 +1,0 @@
-/node_modules
-/dist
-/coverage
-eslintrc.json
-prettierrc.json
-babel.config.json
-tsconfig.json
-package*.json
-jest.config.json
