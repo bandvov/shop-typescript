@@ -1,10 +1,11 @@
 import Div from './common/div';
 import SearchPanel from './searchpanel';
 import SearchbarContainer from '../containers/searchbar-container';
-import { Link } from 'react-router-dom';
 import deliveryIcon from '../images/delivery-icon.svg';
 import phone from '../images/phone.svg';
 import logo from '../images/LOGO.svg';
+import CallLink from './call-link';
+import CustomLink from './custom-link';
 
 function Header(): React.ReactElement {
   return (
@@ -12,66 +13,17 @@ function Header(): React.ReactElement {
       <Div justify="center" width="98vw" minHeight="40px" background="black">
         <Div background="black" width="85vw" justify="space-between">
           <Div background="black">
-            <Link
-              style={{ color: 'white', textDecoration: 'none', margin: '0' }}
-              to="/"
-            >
-              Home
-            </Link>
-            <Link
-              style={{
-                color: 'white',
-                textDecoration: 'none',
-                margin: '0 1rem',
-              }}
-              to="/about"
-            >
-              About
-            </Link>
-            <Link
-              style={{
-                color: 'white',
-                textDecoration: 'none',
-                margin: '0 1rem',
-              }}
-              to="/contacts"
-            >
-              Contacts
-            </Link>
+            <CustomLink label="Home" url="/" />
+            <CustomLink label="About" url="/about" />
+            <CustomLink label="Contacts" url="/contacts" />
           </Div>
           <Div background="black">
-            <a
-              style={{
-                color: 'white',
-                textDecoration: 'none',
-                margin: '0 2rem',
-              }}
-              href="tel:23123123123"
-            >
-              <img
-                style={{
-                  alignItems: 'center',
-                  marginRight: '.5rem',
-                  height: '13px',
-                }}
-                src={phone}
-              />{' '}
-              8 (068) 111-11-11
-            </a>
-            <Link
-              style={{ color: 'white', textDecoration: 'none' }}
-              to="/delivery"
-            >
-              <img
-                style={{
-                  alignItems: 'center',
-                  marginRight: '.5rem',
-                  height: '13px',
-                }}
-                src={deliveryIcon}
-              />
-              Delivery
-            </Link>
+            <CallLink
+              url="tel:4343343434"
+              icon={phone}
+              label="8 (068) 111-11-11"
+            />
+            <CustomLink url="/delivery" icon={deliveryIcon} label="Delivery" />
           </Div>
         </Div>
       </Div>
