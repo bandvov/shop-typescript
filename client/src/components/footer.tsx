@@ -1,33 +1,28 @@
 import Div from './common/div';
-const footerFirstColumn = ['Kitchen', 'Badroom', 'Leaving room'];
 
-const footerSecondColumn = ['Hallways', 'Office furniture', 'Kids room'];
-const footerThirdColumn = ['Wardrobe', 'Matress', 'Soft furniture'];
+const columns = {
+  first:[{name:'Kitchen',path:'#'}, {name:'Badroom',path:'#'}, {name:'Leaving room',path:'#'}],
+  second: [{name:'Hallways',path:'#'}, {name:'Office furniture',path:'#'}, {name:'Kids room',path:'#'}],
+  third: [{name:'Wardrobe',path:'#'}, {name:'Matress',path:'#'}, {name:'Soft furniture',path:'#'}]
+};
 
 function Footer(): React.ReactElement {
-  const mappedFirstColumn = footerFirstColumn.map((item) => {
-    return (
-      <Div key={item} color="white" background="black">
-        {item}
-      </Div>
-    );
-  });
 
-  const mappedSecondColumn = footerSecondColumn.map((item) => {
-    return (
-      <Div key={item} color="white" background="black">
-        {item}
-      </Div>
-    );
-  });
+  const columnSValues = Object.values(columns);
 
-  const mappedThirdColumn = footerThirdColumn.map((item) => {
+  const mappedColumns = columnSValues.map(column =>{
     return (
-      <Div key={item} color="white" background="black">
-        {item}
-      </Div>
-    );
-  });
+      <Div 
+        key={column[0].name}
+        margin="0 1rem 0 0"
+        background="black"
+        direction="column"
+        align="flex-start"        >
+          {column.map(item=>{
+            return <Div  key={item.name} color="white" background="black">{item.name}</Div>;
+          })}
+      </Div>      );
+  }); 
 
   return (
     <Div
@@ -37,30 +32,7 @@ function Footer(): React.ReactElement {
       height="100%"
     >
       <Div background="black">
-        <Div
-          margin="0 1rem 0 0"
-          background="black"
-          direction="column"
-          align="flex-start"
-        >
-          {mappedFirstColumn}
-        </Div>
-        <Div
-          margin="0 1rem 0 0"
-          background="black"
-          direction="column"
-          align="flex-start"
-        >
-          {mappedSecondColumn}
-        </Div>
-        <Div
-          margin="0 1rem 0 0"
-          background="black"
-          direction="column"
-          align="flex-start"
-        >
-          {mappedThirdColumn}
-        </Div>
+        {mappedColumns}
       </Div>
       <Div color="white" background="black" direction="column" align="flex-end">
         <Div
