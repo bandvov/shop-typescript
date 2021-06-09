@@ -19,8 +19,8 @@ export function Routes(): React.ReactElement {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/profile">profile page</Route>
-        <Route path="/wishlist">wishlist page</Route>
+        <Route exact path="/profile">profile page</Route>
+        <Route exact path="/wishlist">wishlist page</Route>
         <Route exact path="/:id">
           detail page
         </Route>

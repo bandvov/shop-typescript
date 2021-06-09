@@ -40,7 +40,7 @@ const validationSchema = Yup.object({
 
 function RegisterPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(true);
 
   const dispatch = useDispatch();
 
@@ -78,8 +78,8 @@ function RegisterPage(): React.ReactElement {
     <Div direction={'column'} minHeight="100vh">
      {success?<Div direction='column'>
       <Success border='2px solid #00BA12' 
-      width='200px'
-      height='200px'
+      width='150px'
+      height='150px'
       borderRadius='50%'><img src={checkCircle} /></Success>
       <span style={{color:'#00BA12',fontSize:'44px'}}>Success!</span>
       <p style={{width:'300px',textAlign:'center'}}>Account succesfully created! Please check your mailbox and confirm your email.</p>
