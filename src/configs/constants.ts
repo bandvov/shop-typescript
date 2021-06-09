@@ -17,6 +17,9 @@ export const LOGIN_PATH = '/login';
 export const PROFILE_PATH = '/profile';
 export const REGISTER_PATH = '/register';
 export const WISHLIST_PATH = '/wishlist';
+export const DETAILS_PATH = '/:id';
+export const ABOUT_PATH = '/about';
+export const CONTACTS_PATH = '/contacts';
 
 export const EMAIL_REGEXP =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

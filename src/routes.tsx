@@ -1,29 +1,29 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginPage from './pages/login-page';
-import { LOGIN_PATH, REGISTER_PATH } from './configs/constants';
+import { LOGIN_PATH, REGISTER_PATH, HOMEPAGE_PATH, PROFILE_PATH, WISHLIST_PATH, DETAILS_PATH, ABOUT_PATH } from './configs/constants';
 import RegisterPage from './pages/registration-page';
 import HomePage from './pages/home-page';
 import Footer from './components/footer';
+
+const routes = [
+  {path: ABOUT_PATH, Component: RegisterPage},
+  {path: DETAILS_PATH, Component: LoginPage},
+  {path: HOMEPAGE_PATH, Component: HomePage},
+  {path: LOGIN_PATH, Component: LoginPage},
+  {path: PROFILE_PATH, Component: LoginPage},
+  {path: REGISTER_PATH
+    , Component: RegisterPage},
+    {path: WISHLIST_PATH, Component: LoginPage},
+];
 
 export function Routes(): React.ReactElement {
   return (
     <div style={{ padding: '0' }}>
       <Switch>
-        <Route exact path={LOGIN_PATH}>
-          <LoginPage />
-        </Route>
-        <Route exact path={REGISTER_PATH}>
-          <RegisterPage />
-        </Route>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/profile">profile page</Route>
-        <Route path="/wishlist">wishlist page</Route>
-        <Route exact path="/:id">
-          detail page
-        </Route>
+      {routes.map(({path,Component})=>{
+        return <Route key={path} exact path={path} component={Component} />;
+      })}
       </Switch>
       <Footer />
     </div>
