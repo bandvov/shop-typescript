@@ -2,9 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginPage from './pages/login-page';
 import { LOGIN_PATH, REGISTER_PATH } from './configs/constants';
-import RegisterPage from './pages/registration-page.';
+import RegisterPage from './pages/registration-page';
 import HomePage from './pages/home-page';
-import Div from './components/common/div';
 import Footer from './components/footer';
 
 export function Routes(): React.ReactElement {
