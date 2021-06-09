@@ -1,10 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Div from '../components/common/div';
 import Header from '../components/header';
 import Card from '../components/card';
 import Button from '../components/common/button';
-import { BASIC_BACKGROUND_COLOR } from '../configs/constants';
+import { BASIC_BACKGROUND_COLOR, CATALOG_PATH } from '../configs/constants';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 const products = [
   {
@@ -117,6 +119,14 @@ const products = [
   },
 ];
 function HomePage(): React.ReactElement {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+axios.get(CATALOG_PATH).then(res=>{
+  console.log(res.data);
+  
+});
+  },[]);
   return (
     <Div padding="0" direction="column" minHeight="90vh" justify="flex-start">
       <Header />
