@@ -6,7 +6,7 @@ export const StyledRegistration = styled(StyledDiv)`
     ${(props) => props.theme.lightOutShadow};
   padding: ${(props) => props.padding || ''};
 `;
-function Registration(props: any): React.ReactElement {
+function Registration(props: IProps): React.ReactElement {
   return <StyledRegistration {...props} />;
 }
 export default Registration;
