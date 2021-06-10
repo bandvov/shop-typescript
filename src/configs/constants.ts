@@ -11,7 +11,7 @@ export const lIGHT_INSET_SHADOW = 'inset -2px -2px 4px 0px rgb(255,255,255)';
 export const BASE_API_URL = 'http://localhost:5000';
 
 export const CART_PATH = '/cart';
-export const CATALOG_PATH = '/catalog';
+export const CATALOG_PATH = '/catalog-products';
 export const HOMEPAGE_PATH = '/';
 export const LOGIN_PATH = '/login';
 export const PROFILE_PATH = '/profile';

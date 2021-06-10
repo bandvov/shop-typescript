@@ -1,10 +1,13 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Div from '../components/common/div';
 import Header from '../components/header';
 import Card from '../components/card';
 import Button from '../components/common/button';
 import { BASIC_BACKGROUND_COLOR } from '../configs/constants';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchCatalogProducts } from '../components/API';
+import { addCataLogProductsToStore } from '../redux/actions/product-actions';
 
 const products = [
   {
@@ -117,6 +120,18 @@ const products = [
   },
 ];
 function HomePage(): React.ReactElement {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    fetchCatalogProducts().then(res=>{
+ dispatch(addCataLogProductsToStore(res.data.products));
+  
+}).catch(e=>{
+  if (e) {
+    console.log(e);    
+  }
+});
+  },[]);
   return (
     <Div padding="0" direction="column" minHeight="90vh" justify="flex-start">
       <Header />

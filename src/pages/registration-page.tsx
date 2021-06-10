@@ -20,7 +20,7 @@ import Checkbox from '../components/common/checkbox';
 import Registration from '../components/registration';
 import Success from '../components/success';
 import checkCircle from '../images/check-circle.svg';
-import React from 'react';
+import { registerUser } from '../components/API';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -40,7 +40,7 @@ const validationSchema = Yup.object({
 
 function RegisterPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
-  const [success, setSuccess] = useState<boolean>(true);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -54,11 +54,10 @@ function RegisterPage(): React.ReactElement {
     },
     validationSchema,
     validateOnChange: true,
-    onSubmit: (data) => {
-     axios
-        .post(BASE_API_URL + REGISTER_PATH, data)
-        .then((res) => {
-            dispatch(res.data);
+    onSubmit: (userData) => {
+      
+    registerUser(userData)
+        .then((res) => {           
             setSuccess(true);
         })
         .catch((e) => {
@@ -82,8 +81,8 @@ function RegisterPage(): React.ReactElement {
       height='150px'
       borderRadius='50%'><img src={checkCircle} /></Success>
       <span style={{color:'#00BA12',fontSize:'44px'}}>Success!</span>
-      <p style={{width:'300px',textAlign:'center'}}>Account succesfully created! Please check your mailbox and confirm your email.</p>
-     <Link to={LOGIN_PATH}><Button width='200px'>Login</Button></Link>
+      <p style={{width:'300px',textAlign:'center'}}>Account succesfully created! Please check your inbox for your confirmation link.</p>
+     <Link to={LOGIN_PATH}><Button width='200px'>Done</Button></Link>
      </Div> : <Registration
         borderRadius={'15px'}
         direction={'column'}
