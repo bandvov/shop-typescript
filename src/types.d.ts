@@ -35,3 +35,17 @@ interface IProps {
 interface IUser {
   [key]?: string;
 }
+
+interface Product {
+  brand?: string;
+  name?: string;
+  price?: string;
+  _id?: string;
+  width?: string;
+  height?: string;
+  depth?: string;
+  category?: string;
+  discountAvailable?: boolean;
+  discount?: string;
+  images?: string[];
+}
