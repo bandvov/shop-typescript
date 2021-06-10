@@ -20,6 +20,7 @@ import Checkbox from '../components/common/checkbox';
 import Registration from '../components/registration';
 import Success from '../components/success';
 import checkCircle from '../images/check-circle.svg';
+import { registerUser } from '../components/API';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -53,9 +54,9 @@ function RegisterPage(): React.ReactElement {
     },
     validationSchema,
     validateOnChange: true,
-    onSubmit: (data) => {
-     axios
-        .post(BASE_API_URL + REGISTER_PATH, data)
+    onSubmit: (userData) => {
+      
+    registerUser(userData)
         .then((res) => {           
             setSuccess(true);
         })

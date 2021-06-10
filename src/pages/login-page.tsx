@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../components/API';
 
 const validationSchema = Yup.object({
   email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
@@ -38,11 +39,9 @@ function LoginPage(): React.ReactElement {
     },
     validationSchema,
     validateOnChange: true,
-    onSubmit: (values) => {
-      axios
-        .post(BASE_API_URL + LOGIN_PATH, values, {
-          withCredentials: true,
-        })
+    onSubmit: (userData) => {
+      
+     loginUser(userData)
         .then((res) => {
           if (res) {
             dispatch(res);
