@@ -1,9 +1,9 @@
-import { FETCH_CATALOG_PRODUCTS } from '../types';
+import { ADD_CATALOG_PRODUCTS } from '../types';
 
 
-export const fetchCataLogProducts = (payload: Product):unknown => {
+export const addCataLogProductsToStore = (payload: Product[]):{type: string,payload:Product[]} => {
     return {
-        type: FETCH_CATALOG_PRODUCTS,
+        type: ADD_CATALOG_PRODUCTS,
         payload
     };
 };
