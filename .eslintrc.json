@@ -20,7 +20,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "indent": [0, 2],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": [1, "windows"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "lines-around-comment": [
