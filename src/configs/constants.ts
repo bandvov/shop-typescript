@@ -19,6 +19,12 @@ export const REGISTER_PATH = '/register';
 export const WISHLIST_PATH = '/wishlist';
 export const PRODUCT_DETAILS_PATH = '/:id';
 
+export const BREAKPOINT_SM = 576;
+export const BREAKPOINT_MD = 768;
+export const BREAKPOINT_LG = 992;
+export const BREAKPOINT_XL = 1200;
+export const BREAKPOINT_XXL = 1400;
+
 export const EMAIL_REGEXP =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const PASSWORD_REGEXP =

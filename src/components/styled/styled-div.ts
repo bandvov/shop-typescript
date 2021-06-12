@@ -18,4 +18,5 @@ export const StyledDiv = styled.div<IProps>`
   margin: ${(props) => props.margin};
   color: ${(props) => props.color || 'black'};
   font-size: ${(props) => props.fontSize};
+  height:${(props)=>props.height};
 `;
