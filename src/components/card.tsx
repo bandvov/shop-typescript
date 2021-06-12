@@ -33,7 +33,7 @@ min-width:100%
 }
 
 div {
-  
+  height: 100%;
   width:100%;
 }
 /* image container  */

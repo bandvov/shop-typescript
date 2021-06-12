@@ -43,7 +43,7 @@ function Footer(): React.ReactElement {
 
   return (
     <Div
-      background="black"
+      background="secondary"
       justify="space-between"
       padding="1rem 6rem"
       height="100%"
