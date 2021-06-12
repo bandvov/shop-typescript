@@ -1,4 +1,4 @@
-import Div from './common/div';
+import { Box, Column, Row, Container, FooterLink } from './footer-styles';
 
 const columns = {
   first: [
@@ -21,52 +21,48 @@ const columns = {
 function Footer(): React.ReactElement {
   const columnSValues = Object.values(columns);
 
-  const mappedColumns = columnSValues.map((column) => {
+  const mappedColumns = columnSValues.map((column,i) => {
     return (
-      <Div
-        key={column[0].name}
-        margin="0 1rem 0 0"
-        background="black"
-        direction="column"
-        align="flex-start"
-      >
+    <Column key={column[i].name}>
         {column.map((item) => {
           return (
-            <Div key={item.name} color="white" background="black">
+            <FooterLink href={item.path} key={item.name}>
               {item.name}
-            </Div>
+            </FooterLink>
           );
         })}
-      </Div>
+      </Column>
     );
   });
 
   return (
-    <Div
-      background="secondary"
-      justify="space-between"
-      padding="1rem 6rem"
-      height="100%"
-    >
-      <Div background="black">{mappedColumns}</Div>
-      <Div color="white" background="black" direction="column" align="flex-end">
-        <Div
-          color="white"
-          background="black"
-          padding="0"
-          fontSize="3rem"
-          align="flex-end"
-        >
-          LM
-        </Div>
-        <Div color="white" background="black" justify="flex-end">
-          Lorem ipsum dolor sit amet consectetur.
-        </Div>
-        <Div color="white" background="black" justify="flex-end">
-          Lorem ipsum amet consectetur.
-        </Div>
-      </Div>
-    </Div>
+    <Box>
+      <Container > 
+          <Row>
+            {mappedColumns}           
+          </Row>
+          <Row>
+            <Column>
+              <Row color='white' right>
+                <FooterLink href='#'><h1>
+                  LM
+                  </h1>
+                  </FooterLink>
+              </Row>
+              <Row color='white' right>
+               <FooterLink href='#'>            
+                  Lorem ipsum dolor sit amet consectetur.                
+                 </FooterLink>
+              </Row>
+              <Row color='white' right>
+                Lorem ipsum amet consectetur.
+              </Row>   
+            </Column>
+          </Row>
+
+
+      </Container>
+    </Box>
   );
 }
 
