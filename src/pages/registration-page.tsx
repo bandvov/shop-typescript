@@ -4,14 +4,11 @@ import { useState } from 'react';
 import Button from '../components/common/button';
 import {
   ERROR_MESSAGE_COLOR,
-  BASE_API_URL,
   LOGIN_PATH,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
   NAME_REGEXP,
-  REGISTER_PATH,
 } from '../configs/constants';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -74,7 +71,7 @@ function RegisterPage(): React.ReactElement {
   };
 
   return (
-    <Div direction={'column'} minHeight="100vh">
+    <Div background='primary' direction={'column'} minHeight="100vh">
      {success?<Div direction='column'>
       <Success border='2px solid #00BA12' 
       width='150px'
@@ -84,6 +81,7 @@ function RegisterPage(): React.ReactElement {
       <p style={{width:'300px',textAlign:'center'}}>Account succesfully created! Please check your inbox for your confirmation link.</p>
      <Link to={LOGIN_PATH}><Button width='200px'>Done</Button></Link>
      </Div> : <Registration
+        background='primary'
         borderRadius={'15px'}
         direction={'column'}
         minHeight="100px"
@@ -94,6 +92,7 @@ function RegisterPage(): React.ReactElement {
         <Div borderRadius="15px" padding="0 3rem 2rem" direction="column">
           <form onSubmit={handleSubmit}>
             <Input
+              background='primary'
               type="text"
               error={!!errors.firstName}
               name="firstName"
@@ -104,6 +103,7 @@ function RegisterPage(): React.ReactElement {
               value={values.firstName}
             />
             <Input
+              background='primary'
               type="text"
               error={!!errors.lastName}
               name="lastName"
@@ -114,6 +114,7 @@ function RegisterPage(): React.ReactElement {
               value={values.lastName}
             />
             <Input
+              background='primary'
               type="text"
               error={!!errors.email}
               name="email"
@@ -124,6 +125,7 @@ function RegisterPage(): React.ReactElement {
               value={values.email}
             />
             <Input
+              background='primary'
               type="text"
               error={!!errors.password}
               name="password"

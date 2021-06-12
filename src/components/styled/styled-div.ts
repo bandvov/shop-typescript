@@ -14,7 +14,7 @@ export const StyledDiv = styled.div<IProps>`
      case 'transparent':
      return 'transparent';
      default:
-     return 'none'; 
+     return props.background; 
    }
    }};
   width: ${(props) => props.width};

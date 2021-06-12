@@ -2,7 +2,18 @@ import styled from 'styled-components';
 
 export const StyledInput = styled.input.attrs({ type: 'text' })<IProps>`
   font-size: ${(props) => props.fontSize || props.theme.fontSize.normal};
-  background: ${(props) => props.background || props.theme.background};
+  background: ${(props) => {
+   switch(props.background) {
+     case 'primary':
+     return props.theme.background.primary;
+     case 'secondary':
+     return props.theme.background.secondary;
+     case 'transparent':
+     return 'transparent';
+     default:
+     return props.background; 
+   }
+   }};
   width: ${(props) => props.width};
   height: ${(props) => props.height || props.theme.inputHeight};
   box-shadow: ${(props) => props.theme.darkInsetShadow},
