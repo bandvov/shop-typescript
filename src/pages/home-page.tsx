@@ -133,9 +133,10 @@ function HomePage(): React.ReactElement {
 });
   },[]);
   return (
-    <Div padding="0" direction="column" minHeight="90vh" justify="flex-start">
+    <Div background="primary" padding="0" direction="column" minHeight="90vh" justify="flex-start">
       <Header />
       <Div
+      background= 'primary'
         width="85%"
         padding="1rem 0 1rem"
         justify="space-between"
@@ -155,7 +156,8 @@ function HomePage(): React.ReactElement {
                 <div>
                   <img
                     style={{ margin: 0 }}
-                    width="100%"              
+                    width="100%"
+                    height='100%'            
                     src={product?.images[0]}
                   />
                 </div>

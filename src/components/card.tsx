@@ -13,7 +13,7 @@ flex: 0 1 calc(20% - 1em);
 
 
   @media screen and (max-width: ${BREAKPOINT_SM}px) {
-min-width:100%
+flex:0 1 100%;
 }
   @media screen and (min-width: ${BREAKPOINT_SM}px) {
   min-width: calc(40% - 10px);
@@ -33,7 +33,7 @@ min-width:100%
 }
 
 div {
-  
+  height: 100%;
   width:100%;
 }
 /* image container  */
