@@ -5,6 +5,7 @@ import { LOGIN_PATH, REGISTER_PATH, PROFILE_PATH, WISHLIST_PATH, PRODUCT_DETAILS
 import RegisterPage from './pages/registration-page';
 import HomePage from './pages/home-page';
 import Footer from './components/footer';
+import Header from './components/header';
 
 const routes = [
   {
@@ -30,6 +31,7 @@ const routes = [
 export function Routes(): React.ReactElement {
   return (
     <div style={{ padding: '0' }}>
+      <Header />
       <Switch>
         {routes.map(({name,path,component})=>{
           return <Route exact key={name} path={path}>{component}</Route>; 
