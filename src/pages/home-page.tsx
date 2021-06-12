@@ -138,7 +138,7 @@ function HomePage(): React.ReactElement {
       <Div
         width="85%"
         padding="1rem 0 1rem"
-        justify="flex-start"
+        justify="space-between"
         wrap="wrap"
         border="1px solid red"
       >
@@ -155,8 +155,7 @@ function HomePage(): React.ReactElement {
                 <div>
                   <img
                     style={{ margin: 0 }}
-                    width="100%"
-                    height={'200'}
+                    width="100%"              
                     src={product?.images[0]}
                   />
                 </div>
