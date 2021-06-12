@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react';
 import Div from '../components/common/div';
-import Header from '../components/header';
 import Card from '../components/card';
 import Button from '../components/common/button';
 import { BASIC_BACKGROUND_COLOR } from '../configs/constants';
@@ -134,7 +133,6 @@ function HomePage(): React.ReactElement {
   },[]);
   return (
     <Div background="primary" padding="0" direction="column" minHeight="90vh" justify="flex-start">
-      <Header />
       <Div
       background= 'primary'
         width="85%"

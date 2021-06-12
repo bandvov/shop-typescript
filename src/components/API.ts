@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_API_URL, REGISTER_PATH, LOGIN_PATH, CATALOG_PATH } from '../configs/constants';
+import { BASE_API_URL, REGISTER_PATH, LOGIN_PATH, CATALOG_PATH, SEARCH_PRODUCT_PATH } from '../configs/constants';
 
 const API = axios.create({baseURL:BASE_API_URL});
 export const registerUser = (data:IUser):Promise<IUser | {message:string}> => {
@@ -8,9 +8,14 @@ export const registerUser = (data:IUser):Promise<IUser | {message:string}> => {
 };
 
 export const loginUser = (data:IUser): Promise<IUser | {message:string}> =>{
-return API.post(LOGIN_PATH,data);
+return API.post(LOGIN_PATH,data,{withCredentials:true});
 };
 export const fetchCatalogProducts = (): Promise<any> =>{
 return API.get(CATALOG_PATH);
 };
+
+export const searchProducts = (filters:unknown): Promise<any> =>{
+return API.post(SEARCH_PRODUCT_PATH, filters);
+};
+
 

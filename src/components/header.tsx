@@ -1,9 +1,7 @@
 import Div from './common/div';
-import SearchPanel from './searchpanel';
-import SearchbarContainer from '../containers/searchbar-container';
+
 import deliveryIcon from '../images/delivery-icon.svg';
 import phone from '../images/phone.svg';
-import logo from '../images/LOGO.svg';
 import CallLink from './call-link';
 import CustomLink from './custom-link';
 
@@ -27,13 +25,7 @@ function Header(): React.ReactElement {
           </Div>
         </Div>
       </Div>
-      <Div background="primary" justify="space-between" align="center" padding="1rem 0" width="85vw">
-        <div style={{ height: '100%' }}>
-          <img src={logo} />
-        </div>
-        <SearchPanel  margin="0 0 0 1rem" width="100%" height="50px" />
-        <SearchbarContainer />
-      </Div>
+
     </Div>
   );
 }
