@@ -4,7 +4,8 @@ import React from 'react';
 import { BREAKPOINT_SM, BREAKPOINT_MD, BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_XXL } from '../configs/constants';
 
 const StyledCard = styled(StyledDiv)`
-flex: 0 1 calc(20% - 1em);
+flex:1 1 calc(20% - 1em);
+max-width: 20%;
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   transition: 0.2s ease-in-out;
@@ -13,23 +14,31 @@ flex: 0 1 calc(20% - 1em);
 
 
   @media screen and (max-width: ${BREAKPOINT_SM}px) {
-flex:0 1 100%;
+    flex:1 1 100%;
+    max-width:100%;
 }
   @media screen and (min-width: ${BREAKPOINT_SM}px) {
-  min-width: calc(40% - 10px);
+    flex:1 1 calc(40% - 10px);
+    max-width: 40%;
 }
   @media screen and (min-width: ${BREAKPOINT_MD}px) {
-    min-width: calc(26% - 10px);
+   flex: 1 1 calc(26% - 10px);
+   max-width: 26%;
 }
     
   @media screen and (min-width: ${BREAKPOINT_LG}px) {
-    min-width: calc(28% - 10px);
+ flex: 1 1 calc(28% - 10px);
+ max-width: 28%;
 }
   @media screen and (min-width: ${BREAKPOINT_XL}px) {
-    min-width: calc(16% - 10px);
+    flex:1 1 calc(20% - 10px);
+    max-width: 20%;
+
 }
   @media screen and (min-width: ${BREAKPOINT_XXL}px) {
-    min-width: calc(16% - 10px);
+    flex:1 1 calc(20% - 10px);
+    max-width: 20%;
+
 }
 
 div {

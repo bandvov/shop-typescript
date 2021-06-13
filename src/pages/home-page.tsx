@@ -135,11 +135,12 @@ function HomePage(): React.ReactElement {
   return (
     <Div background="primary" padding="0" direction="column" minHeight="90vh" justify="flex-start">
      <Search />
+   
       <Div
       background= 'primary'
         width="85%"
         padding="1rem 0 1rem"
-        justify="space-between"
+        justify="flex-start"
         wrap="wrap"
         border="1px solid red"
       >
@@ -234,6 +235,7 @@ function HomePage(): React.ReactElement {
           </Card>
         ))}
       </Div>
+   
     </Div>
   );
 }
