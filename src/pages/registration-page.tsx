@@ -4,14 +4,11 @@ import { useState } from 'react';
 import Button from '../components/common/button';
 import {
   ERROR_MESSAGE_COLOR,
-  BASE_API_URL,
   LOGIN_PATH,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
   NAME_REGEXP,
-  REGISTER_PATH,
 } from '../configs/constants';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -20,7 +17,7 @@ import Checkbox from '../components/common/checkbox';
 import Registration from '../components/registration';
 import Success from '../components/success';
 import checkCircle from '../images/check-circle.svg';
-import React from 'react';
+import { registerUser } from '../components/API';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -40,7 +37,7 @@ const validationSchema = Yup.object({
 
 function RegisterPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
-  const [success, setSuccess] = useState<boolean>(true);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -54,11 +51,10 @@ function RegisterPage(): React.ReactElement {
     },
     validationSchema,
     validateOnChange: true,
-    onSubmit: (data) => {
-     axios
-        .post(BASE_API_URL + REGISTER_PATH, data)
-        .then((res) => {
-            dispatch(res.data);
+    onSubmit: (userData) => {
+      
+    registerUser(userData)
+        .then((res) => {           
             setSuccess(true);
         })
         .catch((e) => {
@@ -75,16 +71,17 @@ function RegisterPage(): React.ReactElement {
   };
 
   return (
-    <Div direction={'column'} minHeight="100vh">
+    <Div background='primary' direction={'column'} minHeight="100vh">
      {success?<Div direction='column'>
       <Success border='2px solid #00BA12' 
       width='150px'
       height='150px'
       borderRadius='50%'><img src={checkCircle} /></Success>
       <span style={{color:'#00BA12',fontSize:'44px'}}>Success!</span>
-      <p style={{width:'300px',textAlign:'center'}}>Account succesfully created! Please check your mailbox and confirm your email.</p>
-     <Link to={LOGIN_PATH}><Button width='200px'>Login</Button></Link>
+      <p style={{width:'300px',textAlign:'center'}}>Account succesfully created! Please check your inbox for your confirmation link.</p>
+     <Link to={LOGIN_PATH}><Button width='200px'>Done</Button></Link>
      </Div> : <Registration
+        background='primary'
         borderRadius={'15px'}
         direction={'column'}
         minHeight="100px"
@@ -95,6 +92,7 @@ function RegisterPage(): React.ReactElement {
         <Div borderRadius="15px" padding="0 3rem 2rem" direction="column">
           <form onSubmit={handleSubmit}>
             <Input
+              background='primary'
               type="text"
               error={!!errors.firstName}
               name="firstName"
@@ -105,6 +103,7 @@ function RegisterPage(): React.ReactElement {
               value={values.firstName}
             />
             <Input
+              background='primary'
               type="text"
               error={!!errors.lastName}
               name="lastName"
@@ -115,6 +114,7 @@ function RegisterPage(): React.ReactElement {
               value={values.lastName}
             />
             <Input
+              background='primary'
               type="text"
               error={!!errors.email}
               name="email"
@@ -125,6 +125,7 @@ function RegisterPage(): React.ReactElement {
               value={values.email}
             />
             <Input
+              background='primary'
               type="text"
               error={!!errors.password}
               name="password"

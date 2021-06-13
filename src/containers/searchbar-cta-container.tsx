@@ -3,7 +3,7 @@ import Div from '../components/common/div';
 import WishlistButton from '../components/wishlist-button';
 import ProfileButton from '../components/profile-button';
 
-function SearchbarContainer(): React.ReactElement {
+function SearchbarCtaContainer(): React.ReactElement {
   return (
     <Div padding="0">
       <WishlistButton />
@@ -13,4 +13,4 @@ function SearchbarContainer(): React.ReactElement {
   );
 }
 
-export default SearchbarContainer;
+export default SearchbarCtaContainer;

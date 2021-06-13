@@ -5,7 +5,18 @@ export const StyledDiv = styled.div<IProps>`
   top: ${(props) => props.top || 0};
   left: ${(props) => props.left || 0};
   padding: ${(props) => props.padding || props.theme.padding.default};
-  background: ${(props) => props.background || props.theme.background};
+  background: ${(props) => {
+   switch(props.background) {
+     case 'primary':
+     return props.theme.background.primary;
+     case 'secondary':
+     return props.theme.background.secondary;
+     case 'transparent':
+     return 'transparent';
+     default:
+     return props.background; 
+   }
+   }};
   width: ${(props) => props.width};
   min-height: ${(props) => props.minHeight || props.theme.minHeight};
   display: ${(props) => props.display || 'flex'};
@@ -18,4 +29,5 @@ export const StyledDiv = styled.div<IProps>`
   margin: ${(props) => props.margin};
   color: ${(props) => props.color || 'black'};
   font-size: ${(props) => props.fontSize};
+  height:${(props)=>props.height};
 `;

@@ -12,7 +12,7 @@ const StyledInput = styled.input<IProps>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   border-radius: ${(props) => props.borderRadius || '35px'};
-  background-color: ${(props) => props.theme.background};
+  background-color: ${(props) => props.theme.background.primary};
   box-shadow: ${(props) => props.theme.lightInsetShadow},
     ${(props) => props.theme.darkInsetShadow};
 `;

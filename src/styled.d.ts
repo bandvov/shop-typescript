@@ -2,7 +2,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    background?: string;
+    background?:Pick<'primary'| 'secondary'|'transparent' | string>;  
     width?: string;
     minHeight?: string;
     inputHeight?: string;

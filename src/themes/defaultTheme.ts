@@ -11,7 +11,10 @@ import {
 } from '../configs/constants';
 
 const defaultTheme: DefaultTheme = {
-  background: BASIC_BACKGROUND_COLOR,
+  background:{
+   primary: BASIC_BACKGROUND_COLOR,
+   secondary: 'black',
+  }, 
   error: ERROR_MESSAGE_COLOR,
   darkOutShadow: DARK_OUT_SHADOW,
   lightOutShadow: LIGHT_OUT_SHADOW,

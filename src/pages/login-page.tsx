@@ -5,17 +5,15 @@ import { useState } from 'react';
 import Button from '../components/common/button';
 import {
   ERROR_MESSAGE_COLOR,
-  BASE_API_URL,
-  LOGIN_PATH,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
   REGISTER_PATH,
 } from '../configs/constants';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../components/API';
 
 const validationSchema = Yup.object({
   email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
@@ -38,11 +36,9 @@ function LoginPage(): React.ReactElement {
     },
     validationSchema,
     validateOnChange: true,
-    onSubmit: (values) => {
-      axios
-        .post(BASE_API_URL + LOGIN_PATH, values, {
-          withCredentials: true,
-        })
+    onSubmit: (userData) => {
+      
+     loginUser(userData)
         .then((res) => {
           if (res) {
             dispatch(res);
@@ -59,8 +55,8 @@ function LoginPage(): React.ReactElement {
   });
 
   return (
-    <Div direction={'column'} minHeight="100vh">
-      <Login
+    <Div background='primary' direction={'column'} minHeight="100vh">
+      <Login  
         borderRadius={'15px'}
         direction={'column'}
         minHeight="100px"
@@ -71,6 +67,7 @@ function LoginPage(): React.ReactElement {
         <Div padding="0 3rem 2rem" direction="column">
           <form onSubmit={handleSubmit}>
             <Input
+              background='primary'
               type="text"
               error={!!(errors.email && touched.email)}
               name="email"
@@ -81,6 +78,7 @@ function LoginPage(): React.ReactElement {
               value={values.email}
             />
             <Input
+              background='primary'
               type="text"
               error={!!(errors.password && touched.password)}
               name="password"
