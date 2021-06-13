@@ -18,7 +18,7 @@ export const PROFILE_PATH = '/profile';
 export const REGISTER_PATH = '/register';
 export const WISHLIST_PATH = '/wishlist';
 export const PRODUCT_DETAILS_PATH = '/:id';
-export const SEARCH_PRODUCT_PATH = '/product/search';
+export const SEARCH_PRODUCT_PATH = '/product-search';
 
 export const BREAKPOINT_SM = 576;
 export const BREAKPOINT_MD = 768;
