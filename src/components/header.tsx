@@ -8,7 +8,7 @@ import CustomLink from './custom-link';
 function Header(): React.ReactElement {
   return (
     <Div padding="0" direction="column">
-      <Div background="secondary" justify="center" width="98vw" minHeight="40px">
+      <Div background="secondary" justify="center" width="100%" minHeight="40px">
         <Div width="85vw" justify="space-between">
           <Div>
             <CustomLink label="Home" url="/" />

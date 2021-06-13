@@ -14,8 +14,8 @@ export const fetchCatalogProducts = (): Promise<any> =>{
 return API.get(CATALOG_PATH);
 };
 
-export const searchProducts = (filters:unknown): Promise<any> =>{
-return API.post(SEARCH_PRODUCT_PATH, filters);
+export const searchProducts = (search:string): Promise<any> =>{
+return API.post(SEARCH_PRODUCT_PATH, {search});
 };
 
 

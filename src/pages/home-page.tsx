@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchCatalogProducts } from '../components/API';
 import { addCataLogProductsToStore } from '../redux/actions/product-actions';
+import Search from '../components/search';
 
 const products = [
   {
@@ -124,15 +125,16 @@ function HomePage(): React.ReactElement {
   useEffect(()=>{
     fetchCatalogProducts().then(res=>{
  dispatch(addCataLogProductsToStore(res.data.products));
-  
 }).catch(e=>{
   if (e) {
     console.log(e);    
   }
 });
   },[]);
+  
   return (
     <Div background="primary" padding="0" direction="column" minHeight="90vh" justify="flex-start">
+     <Search />
       <Div
       background= 'primary'
         width="85%"

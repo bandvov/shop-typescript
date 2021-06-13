@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function WishlistButton({active}:{active: boolean}): React.ReactElement {
+function CartButton({active}:{active: boolean}): React.ReactElement {
   return (
-    <Link to="/wishlist">
+    <Link to="/cart">
       <Button
         active={active}
         margin="0 0 0 1rem"
@@ -22,4 +22,4 @@ function WishlistButton({active}:{active: boolean}): React.ReactElement {
   );
 }
 
-export default WishlistButton;
+export default CartButton;
