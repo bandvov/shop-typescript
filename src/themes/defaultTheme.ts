@@ -8,6 +8,8 @@ import {
   LIGHT_OUT_SHADOW,
   DARK_INSET_SHADOW,
   lIGHT_INSET_SHADOW,
+  DARK_SMALL_OUT_SHADOW,
+  lIGHT_SMALL_OUT_SHADOW
 } from '../configs/constants';
 
 const defaultTheme: DefaultTheme = {
@@ -20,6 +22,8 @@ const defaultTheme: DefaultTheme = {
   lightOutShadow: LIGHT_OUT_SHADOW,
   darkInsetShadow: DARK_INSET_SHADOW,
   lightInsetShadow: lIGHT_INSET_SHADOW,
+  darkSmallOutShadow: DARK_SMALL_OUT_SHADOW,
+  lightSmallOutShadow: lIGHT_SMALL_OUT_SHADOW,
 
   width: '100%',
   minHeight: '100%',

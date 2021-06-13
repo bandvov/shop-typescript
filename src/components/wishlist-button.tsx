@@ -1,13 +1,13 @@
 import React from 'react';
-import Button from './common/button';
 import { Link } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SmallShadowButton from './common/small-shadow-button';
 
 function WishlistButton({active}:{active: boolean}): React.ReactElement {
   return (
     <Link to="/wishlist">
-      <Button
+      <SmallShadowButton
         active={active}
         margin="0 0 0 1rem"
         borderRadius="20px"
@@ -17,7 +17,7 @@ function WishlistButton({active}:{active: boolean}): React.ReactElement {
         color="black"
       >
         <FontAwesomeIcon size="1x" icon={faHeart} />
-      </Button>
+      </SmallShadowButton>
     </Link>
   );
 }

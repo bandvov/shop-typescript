@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from './common/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import SmallShadowButton from './common/small-shadow-button';
 
 function ProfileButton({ active }: { active?: boolean }): React.ReactElement {
   return (
     <Link to="/profile">
-      <Button
+      <SmallShadowButton
         active={active}
         margin="0 0 0 1rem"
         borderRadius="20px"
@@ -17,7 +17,7 @@ function ProfileButton({ active }: { active?: boolean }): React.ReactElement {
         color="black"
       >
         <FontAwesomeIcon icon={faUser} />
-      </Button>
+      </SmallShadowButton>
     </Link>
   );
 }
