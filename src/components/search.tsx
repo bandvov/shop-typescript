@@ -5,7 +5,9 @@ import SearchbarCTAContainer from '../containers/searchbar-cta-container';
 import logo from '../images/LOGO.svg';
 import { searchProducts } from './API';
 
-function Search():React.ReactElement {
+function Search(props:any):React.ReactElement {
+  console.log(props.match);
+  
     const [searchQuery, setSearchQuery] = useState({});
     useEffect(()=>{
     
@@ -15,7 +17,6 @@ function Search():React.ReactElement {
     
     },[searchQuery]);
 
-    console.log(searchQuery);
     
     return (
         <Div background="primary" justify="space-between" align="center" padding="1rem 0" width="85vw">
