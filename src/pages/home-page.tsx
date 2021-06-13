@@ -154,14 +154,14 @@ function HomePage(): React.ReactElement {
           >
             <Div direction="column">
               <Link to={`/${product._id}`}>
-                <div>
+                <Div>
                   <img
                     style={{ margin: 0 }}
-                    width="100%"
+                    width='100%'
                     height='100%'            
                     src={product?.images[0]}
                   />
-                </div>
+                </Div>
               </Link>
               <div>
                 <Link

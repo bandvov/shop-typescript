@@ -10,6 +10,8 @@ declare module 'styled-components' {
     lightOutShadow?: string;
     darkInsetShadow?: string;
     lightInsetShadow?: string;
+    lightSmallOutShadow?: string;
+    darkSmallOutShadow?: string;
     padding: {
       default?: string;
       primary?: string;

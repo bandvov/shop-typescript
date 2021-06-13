@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button<IProps>`
+display: flex;
+justify-content: center;
+align-items: center;
+  position: ${(props)=>props.position};
+  top: ${(props)=>props.position};
+  right: ${(props)=>props.right?'10px':''};
   height: ${(props) => props.height || props.theme.button.height};
   width: ${(props) => props.width || '100%'};
   color: ${(props) => props.color || props.theme.button.color?.primary};
