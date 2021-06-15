@@ -17,7 +17,7 @@ import Checkbox from '../components/common/checkbox';
 import Registration from '../components/registration';
 import Success from '../components/success';
 import checkCircle from '../images/check-circle.svg';
-import { registerUser } from '../components/API';
+import { registerUser } from '../API';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()

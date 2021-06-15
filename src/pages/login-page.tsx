@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../components/API';
+import { loginUser } from '../API';
 
 const validationSchema = Yup.object({
   email: Yup.string().matches(EMAIL_REGEXP, 'Invalid email format').required(),
