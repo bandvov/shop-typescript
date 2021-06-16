@@ -2,7 +2,7 @@ import {useState } from 'react';
 import styled from 'styled-components';
 import Div from './common/div';
 import searchIcon from '../images/search-icon.svg';
-import { searchProducts } from './API';
+import { searchProducts } from '../API';
 import Button from './common/button';
 
 const StyledInput = styled.input<IProps>`
@@ -27,7 +27,7 @@ function SearchPanel(props: IProps): React.ReactElement {
 const [search,setSearch] = useState<string>('');        
   
   const searchHandler =  (value:string)=>{
-
+    
     if (value === '') return;
 
     searchProducts(value).then((res)=>{
