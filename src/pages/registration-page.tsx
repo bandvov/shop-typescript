@@ -9,7 +9,6 @@ import {
   PASSWORD_REGEXP,
   NAME_REGEXP,
 } from '../configs/constants';
-import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -39,7 +38,6 @@ function RegisterPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {

@@ -9,7 +9,6 @@ import {
   PASSWORD_REGEXP,
   REGISTER_PATH,
 } from '../configs/constants';
-import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,6 @@ const validationSchema = Yup.object({
 function LoginPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
 
-  const dispatch = useDispatch();
 
   const { values, errors, handleChange, handleSubmit, touched } = useFormik({
     initialValues: {
@@ -41,7 +39,6 @@ function LoginPage(): React.ReactElement {
      loginUser(userData)
         .then((res) => {
           if (res) {
-            dispatch(res);
             console.log('res', res);
           }
         })

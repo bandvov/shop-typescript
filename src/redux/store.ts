@@ -10,3 +10,4 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 );
 export type StoreState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;
