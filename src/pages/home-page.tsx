@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { fetchCatalogProducts } from '../API';
 import { addCataLogProductsToStore } from '../redux/actions/product-actions';
 import Search from '../components/search';
-import { StoreState } from '../redux/store';
+import { StoreState, AppDispatch } from '../redux/store';
 import { useSelector } from './../redux/helper';
 
 const products = [
@@ -122,7 +122,7 @@ const products = [
   },
 ];
 function HomePage(): React.ReactElement {
-  const dispatch = useDispatch();
+  const dispatch:AppDispatch = useDispatch();
 
   useEffect(()=>{
     fetchCatalogProducts().then(res=>{

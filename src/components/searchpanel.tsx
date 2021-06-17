@@ -4,6 +4,9 @@ import Div from './common/div';
 import searchIcon from '../images/search-icon.svg';
 import { searchProducts } from '../API';
 import Button from './common/button';
+import { useDispatch } from 'react-redux';
+import { addCataLogProductsToStore } from '../redux/actions/product-actions';
+import { AppDispatch } from '../redux/store';
 
 const StyledInput = styled.input<IProps>`
   margin: ${(props) => props.margin};
@@ -24,14 +27,13 @@ box-shadow: ${(props)=>props.theme.lightSmallOutShadow},${(props)=>props.theme.d
 
 function SearchPanel(props: IProps): React.ReactElement {
 
-const [search,setSearch] = useState<string>('');        
-  
-  const searchHandler =  (value:string)=>{
-    
-    if (value === '') return;
+const [search,setSearch] = useState<string>('');
 
-    searchProducts(value).then((res)=>{
-      console.log('search response',res);    
+const dispatch: AppDispatch = useDispatch();
+
+  const searchHandler =  (value:string)=>{
+    searchProducts(value).then((res)=>{      
+      dispatch(addCataLogProductsToStore(res.data));
     }).catch(e=>{
       console.log(e);
     });
