@@ -8,7 +8,9 @@ export const DARK_OUT_SHADOW = '6px 6px 8px 0px rgba(0,0,0,0.25)';
 export const DARK_INSET_SHADOW = 'inset 2px 2px 4px 0px rgba(0,0,0,0.25)';
 export const LIGHT_OUT_SHADOW = '-6px -6px 8px 0px rgb(255,255,255)';
 export const lIGHT_INSET_SHADOW = 'inset -2px -2px 4px 0px rgb(255,255,255)';
-export const BASE_API_URL = 'http://localhost:5000';
+export const DARK_SMALL_OUT_SHADOW = '2px 2px 4px 0px rgba(0,0,0,0.25)';
+export const lIGHT_SMALL_OUT_SHADOW = '-2px -2px 4px 0px rgb(255,255,255)';
+export const BASE_API_URL = process.env.NODE_ENV == 'production'? process.env.REACT_APP_BASE_API_URL:'http://localhost:5000';
 
 export const CART_PATH = '/cart';
 export const CATALOG_PATH = '/catalog-products';
@@ -18,7 +20,7 @@ export const PROFILE_PATH = '/profile';
 export const REGISTER_PATH = '/register';
 export const WISHLIST_PATH = '/wishlist';
 export const PRODUCT_DETAILS_PATH = '/:id';
-export const SEARCH_PRODUCT_PATH = '/product/search';
+export const SEARCH_PRODUCT_PATH = '/product-search';
 
 export const BREAKPOINT_SM = 576;
 export const BREAKPOINT_MD = 768;

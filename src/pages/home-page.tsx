@@ -5,8 +5,11 @@ import Button from '../components/common/button';
 import { BASIC_BACKGROUND_COLOR } from '../configs/constants';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchCatalogProducts } from '../components/API';
+import { fetchCatalogProducts } from '../API';
 import { addCataLogProductsToStore } from '../redux/actions/product-actions';
+import Search from '../components/search';
+import { StoreState, AppDispatch } from '../redux/store';
+import { useSelector } from './../redux/helper';
 
 const products = [
   {
@@ -119,30 +122,34 @@ const products = [
   },
 ];
 function HomePage(): React.ReactElement {
-  const dispatch = useDispatch();
+  const dispatch:AppDispatch = useDispatch();
 
   useEffect(()=>{
     fetchCatalogProducts().then(res=>{
  dispatch(addCataLogProductsToStore(res.data.products));
-  
 }).catch(e=>{
   if (e) {
     console.log(e);    
   }
 });
   },[]);
+const {products} =  useSelector((state: StoreState) => {
+  return  {products:state.products.products};
+});
+
   return (
     <Div background="primary" padding="0" direction="column" minHeight="90vh" justify="flex-start">
+     <Search />
+   
       <Div
       background= 'primary'
         width="85%"
         padding="1rem 0 1rem"
-        justify="space-between"
+        justify="flex-start"
         wrap="wrap"
         border="1px solid red"
       >
-        {products.map((product) => (
-          <Card
+        {products.map((product: any) => ( <Card
             margin={'.7rem'}
             padding="1rem"
             height="100%"
@@ -150,16 +157,16 @@ function HomePage(): React.ReactElement {
             borderRadius="10px"
           >
             <Div direction="column">
-              <Link to={`/${product._id}`}>
-                <div>
+           <Link to={`/${product._id}`}>
+                <Div>
                   <img
                     style={{ margin: 0 }}
-                    width="100%"
+                    width='100%'
                     height='100%'            
                     src={product?.images[0]}
-                  />
-                </div>
-              </Link>
+                    />
+                </Div>
+              </Link>                  
               <div>
                 <Link
                   style={{ textDecoration: 'none', color: 'black' }}
@@ -231,7 +238,7 @@ function HomePage(): React.ReactElement {
             </Div>
           </Card>
         ))}
-      </Div>
+      </Div>   
     </Div>
   );
 }

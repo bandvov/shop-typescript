@@ -8,7 +8,7 @@ export const productReducer = (state = initialState, action:{type:string,payload
         case ADD_CATALOG_PRODUCTS:
             return {
                 ...state,
-                products: action.payload
+               products: action.payload
             };
         
         default:

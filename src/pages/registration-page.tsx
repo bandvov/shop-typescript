@@ -9,7 +9,6 @@ import {
   PASSWORD_REGEXP,
   NAME_REGEXP,
 } from '../configs/constants';
-import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -17,7 +16,7 @@ import Checkbox from '../components/common/checkbox';
 import Registration from '../components/registration';
 import Success from '../components/success';
 import checkCircle from '../images/check-circle.svg';
-import { registerUser } from '../components/API';
+import { registerUser } from '../API';
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -39,7 +38,6 @@ function RegisterPage(): React.ReactElement {
   const [loginError, setLoginError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
