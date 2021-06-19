@@ -2,14 +2,16 @@ import React,{useEffect} from 'react';
 import Div from '../components/common/div';
 import Card from '../components/card';
 import Button from '../components/common/button';
-import { BASIC_BACKGROUND_COLOR } from '../configs/constants';
+import { BASIC_BACKGROUND_COLOR} from '../configs/constants';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchCatalogProducts } from '../API';
 import { addCataLogProductsToStore } from '../redux/actions/product-actions';
-import Search from '../components/search';
+import Search from '../components/search/search';
 import { StoreState, AppDispatch } from '../redux/store';
 import { useSelector } from './../redux/helper';
+
+
 
 const products = [
   {
@@ -138,12 +140,12 @@ const {products} =  useSelector((state: StoreState) => {
 });
 
   return (
-    <Div background="primary" padding="0" direction="column" minHeight="90vh" justify="flex-start">
-     <Search />
-   
+    <Div background="primary" padding="0 6rem" direction="column" minHeight="100%" justify="flex-start">
+     <Search />   
       <Div
       background= 'primary'
-        width="85%"
+        width='100%'
+        minHeight={'60vh'}
         padding="1rem 0 1rem"
         justify="flex-start"
         wrap="wrap"

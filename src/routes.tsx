@@ -4,7 +4,7 @@ import LoginPage from './pages/login-page';
 import { LOGIN_PATH, REGISTER_PATH, PROFILE_PATH, WISHLIST_PATH, PRODUCT_DETAILS_PATH, CART_PATH } from './configs/constants';
 import RegisterPage from './pages/registration-page';
 import HomePage from './pages/home-page';
-import Footer from './components/footer';
+import Footer from './components/footer/footer';
 import Header from './components/header';
 import Wishlist from './pages/wishlist-page';
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import SmallShadowButton from './common/small-shadow-button';
+import SmallShadowButton from '../common/small-shadow-button';
 
-function ProfileButton({ active }: { active?: boolean }): React.ReactElement {
+function WishlistButton({active}:{active: boolean}): React.ReactElement {
   return (
-    <Link to="/profile">
+    <Link to="/wishlist">
       <SmallShadowButton
         active={active}
         margin="0 0 0 1rem"
@@ -16,10 +16,10 @@ function ProfileButton({ active }: { active?: boolean }): React.ReactElement {
         background="none"
         color="black"
       >
-        <FontAwesomeIcon icon={faUser} />
+        <FontAwesomeIcon size="1x" icon={faHeart} />
       </SmallShadowButton>
     </Link>
   );
 }
 
-export default ProfileButton;
+export default WishlistButton;

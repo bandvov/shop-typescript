@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BREAKPOINT_LG, BREAKPOINT_XL } from './../configs/constants';
+import { BREAKPOINT_LG, BREAKPOINT_XL, BREAKPOINT_MD } from '../../configs/constants';
 
 export const Box = styled.div`
   padding: 20px 6rem;
@@ -33,6 +33,9 @@ export const Row = styled.div<IProps>`
     align-items: center;
     justify-content: ${({right})=>right?'flex-end':''};
     color:${(props)=>props.color};
+    @media (max-width: ${BREAKPOINT_MD}px) {
+        flex-direction: column;
+    }
 `;
 
 export const FooterLink = styled.a`
