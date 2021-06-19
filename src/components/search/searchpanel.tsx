@@ -1,18 +1,19 @@
 import {useState } from 'react';
 import styled from 'styled-components';
-import Div from './common/div';
-import searchIcon from '../images/search-icon.svg';
-import { searchProducts } from '../API';
-import Button from './common/button';
+import Div from '../common/div';
+import searchIcon from '../../images/search-icon.svg';
+import { searchProducts } from '../../API';
+import Button from '../common/button';
 import { useDispatch } from 'react-redux';
-import { addCataLogProductsToStore } from '../redux/actions/product-actions';
-import { AppDispatch } from '../redux/store';
+import { addCataLogProductsToStore } from '../../redux/actions/product-actions';
+import { AppDispatch } from '../../redux/store';
 
 const StyledInput = styled.input<IProps>`
   margin: ${(props) => props.margin};
   border: none;
   outline: none;
-  padding-left: 1rem;
+  padding-left: .5rem;
+  padding-right: 3rem;
   outline: none;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
@@ -22,6 +23,8 @@ const StyledInput = styled.input<IProps>`
     ${(props) => props.theme.darkInsetShadow};
 `;
 const StyledSearchButton = styled(Button)`
+
+background-color: ${(props)=>props.theme.background || 'white'};
 box-shadow: ${(props)=>props.theme.lightSmallOutShadow},${(props)=>props.theme.darkSmallOutShadow};
 `;
 

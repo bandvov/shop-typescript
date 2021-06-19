@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SmallShadowButton from './common/small-shadow-button';
+import SmallShadowButton from '../common/small-shadow-button';
 
 function CartButton({active}:{active: boolean}): React.ReactElement {
   return (

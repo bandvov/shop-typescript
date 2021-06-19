@@ -43,13 +43,13 @@ function Footer(): React.ReactElement {
           </Row>
           <Row>
             <Column>
-              <Row color='white' right>
+              <Row right>
                 <FooterLink href='#'><h1>
                   LM
                   </h1>
                   </FooterLink>
               </Row>
-              <Row color='white' right>
+              <Row right>
                <FooterLink href='#'>            
                   Lorem ipsum dolor sit amet consectetur.                
                  </FooterLink>
@@ -59,8 +59,6 @@ function Footer(): React.ReactElement {
               </Row>   
             </Column>
           </Row>
-
-
       </Container>
     </Box>
   );
