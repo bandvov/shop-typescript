@@ -19,7 +19,7 @@ const StyledSeachContainer = styled(Div)`
       transition: all 0.5s ease-in-out;
     flex-direction: column-reverse;
     align-items: flex-end;
-    padding: 0 0 1rem 0;
+    padding: 0;
   }
 `;
 
