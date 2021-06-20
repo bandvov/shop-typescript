@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import Div from '../components/common/div';
 import Card from '../components/card';
 import Button from '../components/common/button';
-import { BASIC_BACKGROUND_COLOR} from '../configs/constants';
+import { BASIC_BACKGROUND_COLOR, BREAKPOINT_MD } from '../configs/constants';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchCatalogProducts } from '../API';
@@ -10,8 +10,14 @@ import { addCataLogProductsToStore } from '../redux/actions/product-actions';
 import Search from '../components/search/search';
 import { StoreState, AppDispatch } from '../redux/store';
 import { useSelector } from './../redux/helper';
+import styled from 'styled-components';
+import Menu from '../components/common/menu';
+import VerticalElipsis from '../components/common/elipsis';
 
-
+const Container = styled(Div)`
+  @media (max-width: ${BREAKPOINT_MD}px) {
+        padding: 0 0.5rem;
+    }`;
 
 const products = [
   {
@@ -125,6 +131,67 @@ const products = [
 ];
 function HomePage(): React.ReactElement {
   const dispatch:AppDispatch = useDispatch();
+  
+  const menuItems = [
+    {
+  title:'Kitchen',
+  
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+    {
+  title:'Bedroom',
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+    {
+  title:'Kids room',
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+    {
+  title:'Lieaving room',
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+    {
+  title: 'Office furniture',
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+    {
+  title: 'Action',
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+    {
+  title: <VerticalElipsis />,
+  right:true,
+    children:[ 
+      {url:'/hhhhh',title:'item1dasdasdasdasdasdas'},
+      {url:'#',title:'item2'},
+      {url:'#',title:'item3'},
+      ]
+    },
+  ];
 
   useEffect(()=>{
     fetchCatalogProducts().then(res=>{
@@ -140,8 +207,9 @@ const {products} =  useSelector((state: StoreState) => {
 });
 
   return (
-    <Div background="primary" padding="0 6rem" direction="column" minHeight="100%" justify="flex-start">
-     <Search />   
+    <Container background="primary" padding="0 6rem" direction="column" minHeight="100%" justify="flex-start">
+     <Search />
+     <Menu />   
       <Div
       background= 'primary'
         width='100%'
@@ -241,7 +309,7 @@ const {products} =  useSelector((state: StoreState) => {
           </Card>
         ))}
       </Div>   
-    </Div>
+    </Container>
   );
 }
 
