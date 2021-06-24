@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import Div from '../components/common/div';
 import Card from '../components/card';
 import Button from '../components/common/button';
-import { BASIC_BACKGROUND_COLOR, BREAKPOINT_MD } from '../configs/constants';
+import { BASIC_BACKGROUND_COLOR, BREAKPOINT_MD, BREAKPOINT_LG } from '../configs/constants';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchCatalogProducts } from '../API';
