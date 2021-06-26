@@ -5,7 +5,7 @@ import SearchbarCTAContainer from '../../containers/searchbar-cta-container';
 import logo from '../../images/LOGO.svg';
 import styled from 'styled-components';
 import { BREAKPOINT_MD } from '../../configs/constants';
-import Hamburger from '../hamburger/hamburger';
+import BurgerMenu from '../burgerMenu/burgerMenu';
 
 const StyledLogoContainer = styled(Div)`
     @media (max-width: ${BREAKPOINT_MD}px) {
@@ -40,7 +40,7 @@ console.log(isMobile);
       <Div background="primary" justify="space-between" align="center" padding="1rem 0" width="100%">
         <StyledLogoContainer>          
       <div>
-      {isMobile && <Hamburger />}
+      {isMobile && <BurgerMenu />}
       </div>
           <img src={logo} />
         </StyledLogoContainer>    
