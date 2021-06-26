@@ -6,7 +6,7 @@ import { BASIC_BACKGROUND_COLOR, ABOUT_US_PATH, CONTACTS_PATH, PRODUCT_CATEGORY_
 import BurgerMenuItem from './burgerMenuItem';
 
 const BurgerContent = styled(Div)` 
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     background-color: ${(props)=>props.theme.background.primary};
     min-width: 140px;
@@ -28,23 +28,34 @@ margin-bottom: 2rem;
     overflow: auto;
     padding-left: 1rem;
 `;
+const BurgerMenuModal = styled.div<IProps>`
+z-index:2;
+display:${(props)=>props.show?'block':'none'};
+width:100%;
+height:100vh;
+position: fixed;
+background:#0a090963;
+top: 0;
+left: 0;
+ `;   
 
 function BurgerMenu({items}:{items?:React.ReactElement[]}) {
     const [show,setShow] = useState<boolean>(false);
     return (
         <BurgerContainer>
-           <Div margin='0 .5rem' onClick={()=> setShow(true)} direction='column'>
+           <Div margin='0 1rem 0' onClick={()=> setShow(true)} direction='column'>
            <div style={{width:'1.5rem',height:'.2rem',backgroundColor:'black',margin:'0 .2rem 0.3rem'}}></div>
            <div style={{width:'1.5rem',height:'.2rem',backgroundColor:'black',margin:'0 .2rem 0.3rem'}}></div>
            <div style={{width:'1.5rem',height:'.2rem',backgroundColor:'black',margin:'0 .2rem 0.2rem'}}></div>
            </Div>
+           <BurgerMenuModal onClick={()=>setShow(false)} show={show}></BurgerMenuModal>
            <BurgerContent justify='flex-start' align='stretch' direction='column' show={show} top='0' left='0' position='absolute'>
                 <div style={{width:'100%'}}>
-                    <Div justify='space-between' align='center' height='50px' width='100%'>
+                    <Div background={BASIC_BACKGROUND_COLOR} justify='space-between' align='center' height='50px' width='100%'>
                         <h3 style={{marginLeft:'2rem'}}>Menu</h3>
                         <SmallShadowButton 
                             onClick={()=>setShow(false)}
-                            zIndex={3} 
+                
                             margin="0 0 0 1rem"
                             borderRadius="20px"
                             width="30px"

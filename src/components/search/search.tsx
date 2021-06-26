@@ -11,7 +11,9 @@ const StyledLogoContainer = styled(Div)`
     @media (max-width: ${BREAKPOINT_MD}px) {
     position: absolute;
     top: -30px;
-    left: 40px;
+    img {
+      margin-left: 1rem;
+    }
   }
 `;
 
