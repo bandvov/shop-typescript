@@ -32,6 +32,8 @@ interface IProps {
   active?: boolean;
   wrap?: string;
   right?: boolean;
+  show?: boolean;
+  zIndex?: number | string;
 }
 interface IUser {
   [key]?: string;
