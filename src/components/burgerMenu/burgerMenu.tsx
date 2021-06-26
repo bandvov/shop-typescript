@@ -12,19 +12,21 @@ const BurgerContent = styled(Div)`
     min-width: 140px;
     height: 100vh;
     padding: 0 .2rem;
-    transition: 1s ease-in-out;
-    transform: ${(props)=>props.show?'translateX(0)':'translateX(-200px)'};
+    transition: .3s ease-in-out;
+    transform: ${(props)=>props.show?'translateX(0)':'translateX(-220px)'};
 `;
 const BurgerContainer = styled(Div)`
 div:first-child{
-    z-index: 2;
+    z-index: 1;
     align-items: center;
 }`;
 const BurgerMenuItemsWrapper = styled.div<IProps>`
+background: ${(props)=>props.theme.background.primary};
 margin-bottom: 2rem;
     display:flex; 
     flex-direction: column;
     overflow: auto;
+    padding-left: 1rem;
 `;
 
 function BurgerMenu({items}:{items?:React.ReactElement[]}) {
@@ -38,8 +40,8 @@ function BurgerMenu({items}:{items?:React.ReactElement[]}) {
            </Div>
            <BurgerContent justify='flex-start' align='stretch' direction='column' show={show} top='0' left='0' position='absolute'>
                 <div style={{width:'100%'}}>
-                    <Div justify='space-between' align='center' height='40px' width='100%'>
-                        <h3 style={{marginLeft:'1rem'}}>Menu</h3>
+                    <Div justify='space-between' align='center' height='50px' width='100%'>
+                        <h3 style={{marginLeft:'2rem'}}>Menu</h3>
                         <SmallShadowButton 
                             onClick={()=>setShow(false)}
                             zIndex={3} 
