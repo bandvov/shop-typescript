@@ -12,14 +12,17 @@ export const DARK_SMALL_OUT_SHADOW = '2px 2px 4px 0px rgba(0,0,0,0.25)';
 export const lIGHT_SMALL_OUT_SHADOW = '-2px -2px 4px 0px rgb(255,255,255)';
 export const BASE_API_URL = process.env.NODE_ENV == 'production'? process.env.REACT_APP_BASE_API_URL:'http://localhost:5000';
 
+export const ABOUT_US_PATH = '/about-us';
 export const CART_PATH = '/cart';
 export const CATALOG_PATH = '/catalog-products';
+export const CONTACTS_PATH = '/contacts';
 export const HOMEPAGE_PATH = '/';
 export const LOGIN_PATH = '/login';
+export const PRODUCT_CATEGORY_PATH = '/product/category';
+export const PRODUCT_DETAILS_PATH = '/product/';
 export const PROFILE_PATH = '/profile';
 export const REGISTER_PATH = '/register';
 export const WISHLIST_PATH = '/wishlist';
-export const PRODUCT_DETAILS_PATH = '/:id';
 export const SEARCH_PRODUCT_PATH = '/product-search';
 
 export const BREAKPOINT_SM = 576;
