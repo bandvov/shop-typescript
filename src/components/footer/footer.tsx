@@ -1,21 +1,17 @@
 import { Box, Column, Row, Container, FooterLink } from './footer-styles';
+import { CATEGORIES, PRODUCT_CATEGORY_PATH } from '../../configs/constants';
 
+const path = PRODUCT_CATEGORY_PATH + '/';
+
+const getCategoriesForFooter = (from = 0,to = CATEGORIES.length): {name:string,path:string}[] => {
+ return CATEGORIES.slice(from, to).map(category => {
+    return {name: category.name, path: path + category.name};
+  });
+};
 const columns = {
-  first: [
-    { name: 'Kitchen', path: '#' },
-    { name: 'Badroom', path: '#' },
-    { name: 'Leaving room', path: '#' },
-  ],
-  second: [
-    { name: 'Hallways', path: '#' },
-    { name: 'Office furniture', path: '#' },
-    { name: 'Kids room', path: '#' },
-  ],
-  third: [
-    { name: 'Wardrobe', path: '#' },
-    { name: 'Matress', path: '#' },
-    { name: 'Soft furniture', path: '#' },
-  ],
+  first: getCategoriesForFooter(0,3),
+  second: getCategoriesForFooter(3,6),
+  third: getCategoriesForFooter(6,9),
 };
 
 function Footer(): React.ReactElement {
