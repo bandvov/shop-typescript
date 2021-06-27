@@ -11,8 +11,8 @@ import Search from '../components/search/search';
 import { StoreState, AppDispatch } from '../redux/store';
 import { useSelector } from './../redux/helper';
 import styled from 'styled-components';
-import Menu from '../components/common/menu';
 import VerticalElipsis from '../components/common/elipsis';
+import Menu from '../components/menu';
 
 const Container = styled(Div)`
   @media (max-width: ${BREAKPOINT_MD}px) {
@@ -208,8 +208,8 @@ const {products} =  useSelector((state: StoreState) => {
 
   return (
     <Container background="primary" padding="0 6rem" direction="column" minHeight="100%" justify="flex-start">
-     <Search />
-     <Menu />   
+     <Search /> 
+     <Menu />
       <Div
       background= 'primary'
         width='100%'
@@ -217,7 +217,6 @@ const {products} =  useSelector((state: StoreState) => {
         padding="1rem 0 1rem"
         justify="flex-start"
         wrap="wrap"
-        border="1px solid red"
       >
         {products.map((product: any) => ( <Card
             margin={'.7rem'}

@@ -36,3 +36,53 @@ export const EMAIL_REGEXP =
 export const PASSWORD_REGEXP =
   /^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*\d+)(?=.*[#^@$!%*?&]+)[A-Za-z\d@$!%*?#^&]{8,20}$/;
 export const NAME_REGEXP = /^([ \u00c0-\u01ffa-zA-Z'-]+){2,}$/;
+
+export const isMobile = window.matchMedia(`(max-width: ${BREAKPOINT_MD}px)`).matches;
+export const isTablet = window.matchMedia(`(max-width: ${BREAKPOINT_LG}px)`).matches;
+
+export const CATEGORIES = [
+  {
+   name: 'Kitchen',
+  children:[
+  {name:'aaa',url:'adasdas'},
+  {name:'aaa dasda',url:'adasdas'},
+  {name:'aaa',url:'adasdas'},
+],
+  },
+  {
+    name:'Bedrooms',
+    children:[
+      {name:'aaa',url:'adasdas'},
+      {name:'aaa',url:'adasdas'},
+    ],
+  },
+  {
+
+   name: 'Kid Rooms',
+   children:[{name:'aaa',url:'adasdas'}],
+  },
+  {
+    name: 'Leaving rooms',
+    children:[{name:'aaa',url:'adasdas'}],
+  },
+  {
+   name: 'Hallways',
+   children:[{name:'aaa',url:'adasdas'}],
+  },
+  {
+   name: 'Office furniture',
+   children:[{name:'aaa',url:'adasdas'}],
+  },
+  {
+   name: 'Mattress',
+   children:[{name:'aaa',url:'adasdas'}],
+  },
+  {
+   name: 'Upholstered furniture',
+   children:[{name:'aaa',url:'adasdas'}],
+  },
+  {
+   name: 'Cabinets',
+   children:[{name:'aaa',url:'adasdas'}],
+  }
+];
